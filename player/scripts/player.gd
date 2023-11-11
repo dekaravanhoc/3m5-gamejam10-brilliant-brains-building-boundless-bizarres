@@ -4,11 +4,14 @@ extends Area2D
 enum Controller {Controller1, Controller2}
 
 var health: int = 100
-var money: int = 0
+var money: int = 1000
 var dmg = 0
 var def: int = 1
 
+var availableUnits = []
+
 @export var controller: Controller
+@export var menu: Control
 
 var input_device: int = 0
 signal health_depleted
@@ -28,17 +31,19 @@ func _input(event):
 	if(event.is_action_pressed("debug_player2_create") && controller == Controller.Controller2):
 		create_unit()
 		
+	#print(event, 'event')
 	if(event.device != input_device):
 		return
 	if(event.is_action_pressed("player_create_unit")):
 		create_unit()
 	if(event.is_action_pressed("player_open_menu")):
-		open_menu()
+		open_menu(event.device)
 
 func create_unit():
 	print("unit")
 	var current_unit = preload("res://unit/unit.tscn").instantiate()
 	if(controller == Controller.Controller1):
+		print(self.get_parent())
 		current_unit.spawn(self.get_parent(), Unit.PLAYER.Player1, self.global_position + Vector2(20,0))
 	if(controller == Controller.Controller2):
 		current_unit.spawn(self.get_parent(), Unit.PLAYER.Player2, self.global_position - Vector2(20,0))
@@ -48,6 +53,9 @@ func hit(amount: int):
 	if health < 0:
 		health_depleted.emit()
 
-func open_menu():
-	print("menu")
+func open_menu(player: int):
+	var children: Button = menu.get_children()[0].get_children()[0].get_children()[0].get_children()[0].get_children()[0].get_children()[2]
+	menu.visible = !menu.is_visible_in_tree()
+	children.grab_focus()
+	print("menu", player)
 

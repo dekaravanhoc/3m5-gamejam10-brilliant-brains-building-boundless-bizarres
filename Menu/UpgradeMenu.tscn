@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkunya2f7r7l3"]
 
-[ext_resource type="Script" path="res://Menu/CloseUpgradeMenu.gd" id="1_iqrvf"]
 [ext_resource type="Script" path="res://Menu/LoadMenuUpgrades.gd" id="1_k7tko"]
+[ext_resource type="PackedScene" uid="uid://u2bwpvu0jyny" path="res://Menu/UpgradeUnit.tscn" id="3_qdp31"]
 
 [node name="UpgradeMenu" type="Control"]
 layout_mode = 3
@@ -10,7 +10,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_iqrvf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(500, 500)
@@ -21,20 +20,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 50
-
-[node name="CloseMenuButton" type="Button" parent="VBoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Menü schliesen"
-
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 200
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2"]
 custom_minimum_size = Vector2(0, 500)
@@ -45,7 +37,79 @@ follow_focus = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+focus_next = NodePath("Button")
 alignment = 1
 script = ExtResource("1_k7tko")
 
-[connection signal="pressed" from="VBoxContainer/MarginContainer/CloseMenuButton" to="." method="_on_close_menu_button_pressed"]
+[node name="Button" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+id = "Test"
+
+[node name="Button2" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+id = "Test2"
+
+[node name="Button3" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+id = "Test3"
+
+[node name="Button4" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button5" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button6" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button7" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button8" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button9" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button10" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button11" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button12" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button13" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button14" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button15" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button16" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button17" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button18" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button19" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button20" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button21" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button22" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+
+[node name="Button23" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+layout_mode = 2
+id = "3232"

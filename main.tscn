@@ -1,43 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://ltk8gn5dkasi"]
+[gd_scene load_steps=5 format=3 uid="uid://ltk8gn5dkasi"]
 
 [ext_resource type="PackedScene" uid="uid://bwr66ksxsn2tm" path="res://player/player.tscn" id="1_7aaju"]
-[gd_scene load_steps=4 format=3 uid="uid://6clykmu71nry"]
-
-[ext_resource type="Script" path="res://Testinput.gd" id="1_2hbdk"]
-[ext_resource type="PackedScene" uid="uid://b08nxb25y3ene" path="res://unit/unit.tscn" id="1_iu6wh"]
+[ext_resource type="Script" path="res://Menu/UpgradeMenu.gd" id="2_ebdhl"]
 [ext_resource type="PackedScene" uid="uid://dkunya2f7r7l3" path="res://Menu/UpgradeMenu.tscn" id="3_w7bbr"]
 
-[node name="Main" type="Control"]
+[sub_resource type="GDScript" id="GDScript_y7w3y"]
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_y7w3y")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MenuControlPlayer1" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_2hbdk")
-
-[node name="base_player" parent="." instance=ExtResource("1_7aaju")]
-position = Vector2(46, 1068)
-
-[node name="base_player2" parent="." instance=ExtResource("1_7aaju")]
-position = Vector2(1861, 1065)
-controller = 1
-[node name="Unit" parent="." instance=ExtResource("1_iu6wh")]
-position = Vector2(359, 299)
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
 anchor_right = 0.5
 anchor_bottom = 1.0
 
-[node name="UpgradeMenuPlayer1" parent="Control" instance=ExtResource("3_w7bbr")]
+[node name="UpgradeMenuPlayer1" parent="CanvasLayer/MenuControlPlayer1" node_paths=PackedStringArray("player") instance=ExtResource("3_w7bbr")]
 layout_mode = 1
+script = ExtResource("2_ebdhl")
+player = NodePath("../../../base_player")
 
-[node name="Control2" type="Control" parent="."]
-layout_mode = 1
+[node name="MenuControlPlayer2" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
 anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="UpgradeMenuPlayer2" parent="Control2" instance=ExtResource("3_w7bbr")]
+[node name="UpgradeMenuPlayer2" parent="CanvasLayer/MenuControlPlayer2" node_paths=PackedStringArray("player") instance=ExtResource("3_w7bbr")]
 layout_mode = 1
+script = ExtResource("2_ebdhl")
+player = NodePath("../../../base_player2")
+
+[node name="base_player" parent="." node_paths=PackedStringArray("menu") instance=ExtResource("1_7aaju")]
+position = Vector2(46, 1068)
+menu = NodePath("../CanvasLayer/MenuControlPlayer1")
+
+[node name="base_player2" parent="." node_paths=PackedStringArray("menu") instance=ExtResource("1_7aaju")]
+position = Vector2(1861, 1065)
+controller = 1
+menu = NodePath("../CanvasLayer/MenuControlPlayer2")
