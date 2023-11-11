@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://ddjl52j44mspy"]
+
+[ext_resource type="PackedScene" uid="uid://b08nxb25y3ene" path="res://unit/unit.tscn" id="1_vual7"]
+[ext_resource type="Texture2D" uid="uid://dwohpfq3yg824" path="res://unit/assets/ball_and_chain_bot/run.png" id="2_id2q5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb804"]
+atlas = ExtResource("2_id2q5")
+region = Rect2(0, 0, 126, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vorbf"]
+atlas = ExtResource("2_id2q5")
+region = Rect2(0, 39, 126, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmbei"]
+atlas = ExtResource("2_id2q5")
+region = Rect2(0, 78, 126, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrsvf"]
+atlas = ExtResource("2_id2q5")
+region = Rect2(0, 117, 126, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laki5"]
+atlas = ExtResource("2_id2q5")
+region = Rect2(0, 156, 126, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m451h"]
+atlas = ExtResource("2_id2q5")
+region = Rect2(0, 195, 126, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnmd8"]
+atlas = ExtResource("2_id2q5")
+region = Rect2(0, 234, 126, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3vtu"]
+atlas = ExtResource("2_id2q5")
+region = Rect2(0, 273, 126, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qu1ns"]
+resource_local_to_scene = true
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb804")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vorbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmbei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrsvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laki5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m451h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnmd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3vtu")
+}],
+"loop": true,
+"name": &"move",
+"speed": 8.0
+}]
+
+[node name="UnitPlayer1" instance=ExtResource("1_vual7")]
+collision_mask = 2
+
+[node name="UnitAnimation" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_qu1ns")
