@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://g0uhouxhnp44"]
+[gd_scene load_steps=38 format=3 uid="uid://g0uhouxhnp44"]
 
 [ext_resource type="PackedScene" uid="uid://b08nxb25y3ene" path="res://unit/unit.tscn" id="1_hgare"]
 [ext_resource type="Texture2D" uid="uid://b8iqducfnsbg4" path="res://unit/assets/shield_droid/shield puulse.png" id="2_oe7jq"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cj2pp7brrv8rg" path="res://unit/assets/shield_droid/shield finished.png" id="4_wph2w"]
 [ext_resource type="Texture2D" uid="uid://drw1naaksa5l8" path="res://unit/assets/shield_droid/shock attack.png" id="5_6u1la"]
 [ext_resource type="Texture2D" uid="uid://jwfd60f67fgp" path="res://unit/assets/shield_droid/walk.png" id="6_s2n2v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3aigd"]
+resource_local_to_scene = true
+radius = 65.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_224t8"]
 atlas = ExtResource("3_to1eg")
@@ -137,7 +141,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_coots")
 }],
-"loop": true,
+"loop": false,
 "name": &"charge",
 "speed": 8.0
 }, {
@@ -194,7 +198,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ofu0a")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 8.0
 }, {
@@ -222,9 +226,28 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Unit2" instance=ExtResource("1_hgare")]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_t050m"]
+resource_local_to_scene = true
+b = Vector2(270, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_h3ufs"]
+resource_local_to_scene = true
+b = Vector2(160, 0)
+
+[node name="Unit" instance=ExtResource("1_hgare")]
+
+[node name="UnitCollision" parent="." index="0"]
+shape = SubResource("CircleShape2D_3aigd")
 
 [node name="UnitAnimation" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_q5b82")
-animation = &"charge"
+animation = &"die"
+frame = 7
+frame_progress = 1.0
 offset = Vector2(0, -16)
+
+[node name="AttackShape" parent="AttackBox" index="0"]
+shape = SubResource("SegmentShape2D_t050m")
+
+[node name="AttackRangeShape" parent="AttackRange" index="0"]
+shape = SubResource("SegmentShape2D_h3ufs")

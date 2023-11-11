@@ -1,10 +1,14 @@
-[gd_scene load_steps=32 format=3 uid="uid://328i2m2lfiom"]
+[gd_scene load_steps=35 format=3 uid="uid://328i2m2lfiom"]
 
 [ext_resource type="PackedScene" uid="uid://b08nxb25y3ene" path="res://unit/unit.tscn" id="1_3c12p"]
 [ext_resource type="Texture2D" uid="uid://df50ljpruijh" path="res://unit/assets/spirit_boxer/attack 1.png" id="2_m8x1c"]
 [ext_resource type="Texture2D" uid="uid://l88oacrotdja" path="res://unit/assets/spirit_boxer/Damaged & Death.png" id="3_kweuq"]
 [ext_resource type="Texture2D" uid="uid://fpkri5lrn64w" path="res://unit/assets/spirit_boxer/Idle.png" id="3_onl4q"]
 [ext_resource type="Texture2D" uid="uid://dw0fs3d8p8thv" path="res://unit/assets/spirit_boxer/Run.png" id="4_e8y82"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oea1k"]
+resource_local_to_scene = true
+radius = 65.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lj4pi"]
 atlas = ExtResource("2_m8x1c")
@@ -215,10 +219,26 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4g0jx"]
+resource_local_to_scene = true
+b = Vector2(270, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_r7vat"]
+resource_local_to_scene = true
+b = Vector2(160, 0)
+
 [node name="Unit" instance=ExtResource("1_3c12p")]
+
+[node name="UnitCollision" parent="." index="0"]
+shape = SubResource("CircleShape2D_oea1k")
 
 [node name="UnitAnimation" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_b52wk")
-animation = &"attack_start"
 frame = 4
 offset = Vector2(52, -13)
+
+[node name="AttackShape" parent="AttackBox" index="0"]
+shape = SubResource("SegmentShape2D_4g0jx")
+
+[node name="AttackRangeShape" parent="AttackRange" index="0"]
+shape = SubResource("SegmentShape2D_r7vat")

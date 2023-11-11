@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ddwlb876x6p5w" path="res://unit/assets/ball_and_chain_bot/death.png" id="4_c4n51"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kgue4"]
+resource_local_to_scene = true
 radius = 65.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bdyj5"]
@@ -221,9 +222,11 @@ animations = [{
 }]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ybb78"]
+resource_local_to_scene = true
 b = Vector2(270, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_baub5"]
+resource_local_to_scene = true
 b = Vector2(160, 0)
 
 [node name="Unit" type="Area2D" node_paths=PackedStringArray("animated_sprite", "attack_box", "attack_range", "behavior")]
@@ -243,8 +246,9 @@ shape = SubResource("CircleShape2D_kgue4")
 [node name="UnitAnimation" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_qjrww")
-animation = &"attack_end"
+animation = &"attack_start"
 autoplay = "move"
+frame = 1
 offset = Vector2(0, -13)
 
 [node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("unit")]

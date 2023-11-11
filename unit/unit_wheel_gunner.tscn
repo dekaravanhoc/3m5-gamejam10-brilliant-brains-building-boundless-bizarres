@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dli3v75tafgq"]
+[gd_scene load_steps=36 format=3 uid="uid://dli3v75tafgq"]
 
 [ext_resource type="PackedScene" uid="uid://b08nxb25y3ene" path="res://unit/unit.tscn" id="1_811s0"]
 [ext_resource type="Texture2D" uid="uid://bs2t3ckds52wm" path="res://unit/assets/bot_wheel/shoot with FX.png" id="2_0ibou"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://6konvded7arw" path="res://unit/assets/bot_wheel/charge.png" id="4_mn0ij"]
 [ext_resource type="Texture2D" uid="uid://cmil7mffnhrsp" path="res://unit/assets/bot_wheel/move with FX.png" id="5_0sxjk"]
 [ext_resource type="Texture2D" uid="uid://ijlyf1omlxnl" path="res://unit/assets/bot_wheel/death.png" id="5_vl5r6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_173av"]
+resource_local_to_scene = true
+radius = 65.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcuoq"]
 atlas = ExtResource("2_0ibou")
@@ -219,10 +223,30 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Unit2" instance=ExtResource("1_811s0")]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_t3al0"]
+resource_local_to_scene = true
+b = Vector2(300, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_s227i"]
+resource_local_to_scene = true
+b = Vector2(190, 0)
+
+[node name="Unit" instance=ExtResource("1_811s0")]
+health = 8
+dps = 1
+speed = 90
+
+[node name="UnitCollision" parent="." index="0"]
+shape = SubResource("CircleShape2D_173av")
 
 [node name="UnitAnimation" parent="." index="1"]
 position = Vector2(0, 4)
 sprite_frames = SubResource("SpriteFrames_86jdg")
-animation = &"attack_start"
+frame = 0
 offset = Vector2(35, -13)
+
+[node name="AttackShape" parent="AttackBox" index="0"]
+shape = SubResource("SegmentShape2D_t3al0")
+
+[node name="AttackRangeShape" parent="AttackRange" index="0"]
+shape = SubResource("SegmentShape2D_s227i")
