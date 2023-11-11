@@ -14,6 +14,7 @@ var input_device: int = 0
 signal health_depleted
 
 func _ready():
+	$hud.update_health(health)
 	if controller == Controller.Controller1:
 		collision_layer = 1
 		input_device = 0
@@ -23,6 +24,7 @@ func _ready():
 
 func _process(delta):
 	pass
+	$hud.update_money(money)
 	
 func _input(event):
 	if(event.is_action_pressed("debug_player2_create") && controller == Controller.Controller2):
@@ -36,7 +38,6 @@ func _input(event):
 		open_menu()
 
 func create_unit():
-	print("unit")
 	var current_unit = preload("res://unit/unit.tscn").instantiate()
 	if(controller == Controller.Controller1):
 		current_unit.spawn(self.get_parent(), Unit.PLAYER.Player1, self.global_position + Vector2(20,0))
@@ -45,6 +46,7 @@ func create_unit():
 	
 func hit(amount: int):
 	health = health - amount
+	$hud.update_health(health)
 	if health < 0:
 		health_depleted.emit()
 

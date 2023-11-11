@@ -8,5 +8,5 @@
 position = Vector2(46, 1068)
 
 [node name="base_player2" parent="." instance=ExtResource("1_7aaju")]
-position = Vector2(1861, 1065)
+position = Vector2(1848, 1038)
 controller = 1
