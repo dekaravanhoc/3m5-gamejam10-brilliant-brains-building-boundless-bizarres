@@ -11,6 +11,7 @@ var def: int = 1
 @export var controller: Controller
 
 var input_device: int = 0
+signal health_depleted
 
 func _ready():
 	if controller == Controller.Controller1:
@@ -24,6 +25,9 @@ func _process(delta):
 	pass
 	
 func _input(event):
+	if(event.is_action_pressed("debug_player2_create") && controller == Controller.Controller2):
+		create_unit()
+		
 	if(event.device != input_device):
 		return
 	if(event.is_action_pressed("player_create_unit")):
@@ -33,9 +37,17 @@ func _input(event):
 
 func create_unit():
 	print("unit")
+	var current_unit = preload("res://unit/unit.tscn").instantiate()
+	if(controller == Controller.Controller1):
+		current_unit.spawn(self.get_parent(), Unit.PLAYER.Player1, self.global_position + Vector2(20,0))
+	if(controller == Controller.Controller2):
+		current_unit.spawn(self.get_parent(), Unit.PLAYER.Player2, self.global_position - Vector2(20,0))
 	
 func hit(amount: int):
 	health = health - amount
+	if health < 0:
+		health_depleted.emit()
 
 func open_menu():
 	print("menu")
+
