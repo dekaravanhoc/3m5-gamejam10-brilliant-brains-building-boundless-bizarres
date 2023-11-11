@@ -38,10 +38,11 @@ func _input(event):
 		open_menu()
 
 func create_unit():
-	var current_unit = preload("res://unit/unit.tscn").instantiate()
 	if(controller == Controller.Controller1):
+		var current_unit = preload("res://unit/unit.tscn").instantiate()
 		current_unit.spawn(self.get_parent(), Unit.PLAYER.Player1, self.global_position + Vector2(20,0))
 	if(controller == Controller.Controller2):
+		var current_unit = preload("res://unit/unit_boxer.tscn").instantiate()
 		current_unit.spawn(self.get_parent(), Unit.PLAYER.Player2, self.global_position - Vector2(20,0))
 	
 func hit(amount: int):

@@ -1,14 +1,29 @@
-
-[gd_scene load_steps=2 format=3 uid="uid://dw6nkaspcl63u"]
-
+[gd_scene load_steps=4 format=3 uid="uid://dw6nkaspcl63u"]
 
 [ext_resource type="PackedScene" uid="uid://bwr66ksxsn2tm" path="res://player/player.tscn" id="1_7aaju"]
+[ext_resource type="Texture2D" uid="uid://2lit1b6p0sj7" path="res://assets/vast_land.png" id="2_bvo7h"]
+[ext_resource type="Texture2D" uid="uid://500woqq3yr4g" path="res://assets/vast_land_front.png" id="3_k54gd"]
 
 [node name="Main" type="Node2D"]
 
 [node name="base_player" parent="." instance=ExtResource("1_7aaju")]
-position = Vector2(46, 1068)
+position = Vector2(44, 1000)
 
 [node name="base_player2" parent="." instance=ExtResource("1_7aaju")]
-position = Vector2(1848, 1038)
+position = Vector2(1850, 1000)
 controller = 1
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="VastLand" type="Sprite2D" parent="Background"]
+position = Vector2(961.942, 507.75)
+scale = Vector2(1.57993, 1.57993)
+texture = ExtResource("2_bvo7h")
+
+[node name="Foreground" type="CanvasLayer" parent="."]
+
+[node name="VastLand" type="Sprite2D" parent="Foreground"]
+position = Vector2(961.942, 507.75)
+scale = Vector2(1.57993, 1.57993)
+texture = ExtResource("3_k54gd")
