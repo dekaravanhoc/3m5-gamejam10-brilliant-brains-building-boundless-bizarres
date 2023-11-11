@@ -13,8 +13,15 @@ var def: int = 1
 var input_device: int = 0
 signal health_depleted
 
+var current_health: int:
+	set(value):
+		current_health = min(health, max(0, value))
+		if current_health == 0:
+			health_depleted.emit()
+
 func _ready():
-	$hud.update_health(health)
+	current_health = health
+	$hud.update_health(current_health)
 	if controller == Controller.Controller1:
 		collision_layer = 1
 		input_device = 0
@@ -46,10 +53,8 @@ func create_unit():
 		current_unit.spawn(self.get_parent(), Unit.PLAYER.Player2, self.global_position - Vector2(20,0))
 	
 func hit(amount: int):
-	health = health - amount
-	$hud.update_health(health)
-	if health < 0:
-		health_depleted.emit()
+	current_health -= amount
+	$hud.update_health(100.0 * current_health / health)
 
 func open_menu():
 	print("menu")
