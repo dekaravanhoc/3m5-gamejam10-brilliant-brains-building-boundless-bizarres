@@ -234,6 +234,7 @@ animated_sprite = NodePath("UnitAnimation")
 attack_box = NodePath("AttackBox")
 attack_range = NodePath("AttackRange")
 behavior = NodePath("Behavior")
+speed = 200
 
 [node name="UnitCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -50)
