@@ -222,8 +222,10 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Unit" instance=ExtResource("1_hgare")]
+[node name="Unit2" instance=ExtResource("1_hgare")]
 
 [node name="UnitAnimation" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_q5b82")
+frame = 0
+frame_progress = 0.0
 offset = Vector2(0, -16)

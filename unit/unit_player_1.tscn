@@ -78,3 +78,6 @@ collision_mask = 2
 
 [node name="UnitAnimation" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_qu1ns")
+animation = &"default"
+frame = 0
+frame_progress = 0.0
