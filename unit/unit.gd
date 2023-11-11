@@ -16,9 +16,11 @@ enum PLAYER {Player1, Player2}
 @export var def: int = 0
 @export var speed: int = 100
 @export var gold_drop: int = 1
+@export var upgrade_function = GDScript
 
 var hit_tween: Tween
 var current_player: PLAYER = PLAYER.Player1
+var gold_collect_function: Callable = func(_amount: int): return
 
 var current_move_direction: Vector2:
 	get:
@@ -50,9 +52,11 @@ func _ready():
 		scale.x *= -1
 
 
-func spawn(parent_to_spawn_in: Node2D, player: PLAYER, spawn_position: Vector2):
+func spawn(parent_to_spawn_in: Node2D, player: PLAYER, spawn_position: Vector2, gold_collect_function_to_use: Callable, level: int = 1):
 	global_position = spawn_position
 	current_player = player
+	gold_collect_function = gold_collect_function_to_use
+	upgrade_function.upgrade(self, level)
 	parent_to_spawn_in.add_child(self)
 
 

@@ -6,12 +6,16 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="base_player" parent="." instance=ExtResource("1_7aaju")]
+[node name="base_player" parent="." node_paths=PackedStringArray("enemy_player", "win_message_label") instance=ExtResource("1_7aaju")]
 position = Vector2(44, 1000)
+enemy_player = NodePath("../base_player2")
+win_message_label = NodePath("../Text/CenterContainer/WinMessage")
 
-[node name="base_player2" parent="." instance=ExtResource("1_7aaju")]
+[node name="base_player2" parent="." node_paths=PackedStringArray("enemy_player", "win_message_label") instance=ExtResource("1_7aaju")]
 position = Vector2(1850, 1000)
 controller = 1
+enemy_player = NodePath("../base_player")
+win_message_label = NodePath("../Text/CenterContainer/WinMessage")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -27,3 +31,20 @@ texture = ExtResource("2_bvo7h")
 position = Vector2(961.942, 507.75)
 scale = Vector2(1.57993, 1.57993)
 texture = ExtResource("3_k54gd")
+
+[node name="Text" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Text"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinMessage" type="Label" parent="Text/CenterContainer"]
+visible = false
+modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 200
+text = "Player 1 WON"
