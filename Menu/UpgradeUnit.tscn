@@ -1,24 +1,28 @@
 [gd_scene load_steps=3 format=3 uid="uid://u2bwpvu0jyny"]
 
-[ext_resource type="Texture2D" uid="uid://boor0puamdwbv" path="res://sample/gfx100s_sample_04_thum-1.jpg" id="1_irigk"]
-[ext_resource type="Script" path="res://Menu/UpgradeUnit.gd" id="1_r30io"]
+[ext_resource type="Script" path="res://Menu/BuyUnit.gd" id="1_hiiiq"]
+[ext_resource type="Texture2D" uid="uid://boor0puamdwbv" path="res://Menu/sample/gfx100s_sample_04_thum-1.jpg" id="2_dwy76"]
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(0, 100)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("1_r30io")
+script = ExtResource("1_hiiiq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_irigk")
+texture = ExtResource("2_dwy76")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -48,3 +52,5 @@ size_flags_vertical = 3
 text = "100 Gold"
 fit_content = true
 scroll_active = false
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

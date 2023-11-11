@@ -3,8 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://bwr66ksxsn2tm" path="res://player/player.tscn" id="1_7aaju"]
 [ext_resource type="Texture2D" uid="uid://2lit1b6p0sj7" path="res://assets/vast_land.png" id="2_bvo7h"]
 [ext_resource type="Texture2D" uid="uid://500woqq3yr4g" path="res://assets/vast_land_front.png" id="3_k54gd"]
+[gd_scene load_steps=4 format=3 uid="uid://6clykmu71nry"]
 
-[node name="Main" type="Node2D"]
+[ext_resource type="Script" path="res://Testinput.gd" id="1_2hbdk"]
+[ext_resource type="PackedScene" uid="uid://b08nxb25y3ene" path="res://unit/unit.tscn" id="1_iu6wh"]
+[ext_resource type="PackedScene" uid="uid://dkunya2f7r7l3" path="res://Menu/UpgradeMenu.tscn" id="3_w7bbr"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2hbdk")
 
 [node name="base_player" parent="." node_paths=PackedStringArray("enemy_player", "win_message_label") instance=ExtResource("1_7aaju")]
 position = Vector2(44, 1000)
@@ -48,3 +60,22 @@ modulate = Color(1, 0, 1, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 200
 text = "Player 1 WON"
+[node name="Unit" parent="." instance=ExtResource("1_iu6wh")]
+position = Vector2(359, 299)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.5
+anchor_bottom = 1.0
+
+[node name="UpgradeMenuPlayer1" parent="Control" instance=ExtResource("3_w7bbr")]
+layout_mode = 1
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="UpgradeMenuPlayer2" parent="Control2" instance=ExtResource("3_w7bbr")]
+layout_mode = 1
