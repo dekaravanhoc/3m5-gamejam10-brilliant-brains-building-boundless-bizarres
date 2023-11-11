@@ -220,6 +220,5 @@ animations = [{
 [node name="UnitAnimation" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_b52wk")
 animation = &"attack_start"
-frame = 0
-frame_progress = 0.0
+frame = 4
 offset = Vector2(52, -13)

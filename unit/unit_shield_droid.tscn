@@ -226,6 +226,5 @@ animations = [{
 
 [node name="UnitAnimation" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_q5b82")
-frame = 0
-frame_progress = 0.0
+animation = &"charge"
 offset = Vector2(0, -16)
