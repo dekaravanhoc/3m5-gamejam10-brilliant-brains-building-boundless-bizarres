@@ -11,6 +11,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_kgue4"]
 radius = 65.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdyj5"]
+atlas = ExtResource("2_l2o7t")
+region = Rect2(0, 195, 126, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3noc"]
+atlas = ExtResource("2_l2o7t")
+region = Rect2(0, 234, 126, 39)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ptb5"]
 atlas = ExtResource("2_l2o7t")
 region = Rect2(0, 273, 126, 39)
@@ -34,14 +42,6 @@ region = Rect2(0, 117, 126, 39)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2r8gt"]
 atlas = ExtResource("2_l2o7t")
 region = Rect2(0, 156, 126, 39)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xcgeg"]
-atlas = ExtResource("2_l2o7t")
-region = Rect2(0, 195, 126, 39)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mplpx"]
-atlas = ExtResource("2_l2o7t")
-region = Rect2(0, 234, 126, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6folb"]
 atlas = ExtResource("3_iixhc")
@@ -116,6 +116,17 @@ resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bdyj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3noc")
+}],
+"loop": false,
+"name": &"attack_end",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1ptb5")
 }, {
 "duration": 1.0,
@@ -132,15 +143,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2r8gt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xcgeg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mplpx")
 }],
 "loop": false,
-"name": &"attack",
+"name": &"attack_start",
 "speed": 8.0
 }, {
 "frames": [{
@@ -221,13 +226,14 @@ b = Vector2(270, 0)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_baub5"]
 b = Vector2(160, 0)
 
-[node name="Unit" type="Area2D" node_paths=PackedStringArray("animated_sprite", "attack_box", "attack_range")]
+[node name="Unit" type="Area2D" node_paths=PackedStringArray("animated_sprite", "attack_box", "attack_range", "behavior")]
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_6mxwx")
 animated_sprite = NodePath("UnitAnimation")
 attack_box = NodePath("AttackBox")
 attack_range = NodePath("AttackRange")
+behavior = NodePath("Behavior")
 
 [node name="UnitCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -50)
@@ -236,10 +242,8 @@ shape = SubResource("CircleShape2D_kgue4")
 [node name="UnitAnimation" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_qjrww")
-animation = &"attack"
+animation = &"attack_end"
 autoplay = "move"
-frame = 7
-frame_progress = 1.0
 offset = Vector2(0, -13)
 
 [node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("unit")]

@@ -5,6 +5,8 @@ extends Node
 @export var unit: Unit
 @export var start_state: GDScript
 
+var stopped = false
+
 var current_state: State = State.new()
 
 func _ready():
@@ -16,6 +18,8 @@ func _process(delta: float):
 
 
 func change_state(new_state: State):
+	if stopped:
+		return
 	current_state.end()
 	current_state = new_state
 	current_state.behavior = self

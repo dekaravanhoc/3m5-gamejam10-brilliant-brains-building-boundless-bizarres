@@ -2,6 +2,7 @@ class_name Unit
 extends Area2D
 
 signal health_changed(value: int)
+signal gold_dropped(amount: int)
 signal killed
 
 enum PLAYER {Player1, Player2}
@@ -14,8 +15,6 @@ enum PLAYER {Player1, Player2}
 @export var dps: int = 2
 @export var def: int = 0
 @export var speed: int = 100
-@export var attack_speed: float = 1.0
-@export var hit_time: float = 0.625
 @export var gold_drop: int = 1
 
 var hit_tween: Tween
@@ -27,6 +26,8 @@ var current_move_direction: Vector2:
 			return Vector2.RIGHT
 		else:
 			return Vector2.LEFT
+
+@onready var attack_speed: float = (animated_sprite.sprite_frames.get_frame_count("attack_start") + animated_sprite.sprite_frames.get_frame_count("attack_end")) / 8.0
 
 var current_health: int:
 	set(value):
@@ -46,7 +47,7 @@ func _ready():
 		collision_layer = 2
 		attack_box.collision_mask = 1
 		attack_range.collision_mask = 1
-		animated_sprite.flip_h = current_player == PLAYER.Player1
+		scale.x *= -1
 
 
 func spawn(parent_to_spawn_in: Node2D, player: PLAYER, spawn_position: Vector2):
