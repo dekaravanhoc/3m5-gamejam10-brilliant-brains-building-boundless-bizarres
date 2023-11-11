@@ -22,6 +22,6 @@ text = "Test"
 layout_mode = 0
 offset_left = -11.0
 offset_top = -125.0
-offset_right = -7.0
+offset_right = 133.0
 offset_bottom = -98.0
 rotation = -1.5719
