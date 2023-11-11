@@ -10,6 +10,7 @@ func _ready():
 func _process(delta):
 	pass
 
+	
 
 func _on_button_up():
 	print("Du hast mich gekauft lelelele")

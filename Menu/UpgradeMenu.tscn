@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkunya2f7r7l3"]
+[gd_scene load_steps=3 format=3 uid="uid://dkunya2f7r7l3"]
 
+[ext_resource type="Script" path="res://Menu/CloseUpgradeMenu.gd" id="1_iqrvf"]
 [ext_resource type="Script" path="res://Menu/LoadMenuUpgrades.gd" id="1_k7tko"]
 
 [node name="UpgradeMenu" type="Control"]
@@ -9,8 +10,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_iqrvf")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,16 +21,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-script = ExtResource("1_k7tko")
+theme_override_constants/margin_top = 50
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+[node name="CloseMenuButton" type="Button" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 50
-
-[node name="CloseMenuButton" type="Button" parent="CenterContainer/VBoxContainer/MarginContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Menü schliesen"
 
-[connection signal="button_up" from="CenterContainer/VBoxContainer/MarginContainer/CloseMenuButton" to="CenterContainer/VBoxContainer" method="_on_close_menu_button_up"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_k7tko")
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/CloseMenuButton" to="." method="_on_close_menu_button_pressed"]

@@ -11,11 +11,7 @@ func _process(delta):
 	pass
 
 
-func _on_button_button_up():
-	get_tree().change_scene_to_file("res://main.tscn")
-	pass # Replace with function body.
-
-
-func _on_exit_button_button_up():
-	get_tree().quit();
+func _on_pressed():
+	print("Das ist ein Test")
+	# hier dann checken, ob der player genug geld zum kaufen hat
 	pass # Replace with function body.
