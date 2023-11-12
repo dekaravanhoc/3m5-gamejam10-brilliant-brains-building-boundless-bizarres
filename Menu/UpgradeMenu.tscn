@@ -1,18 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkunya2f7r7l3"]
+[gd_scene load_steps=9 format=3 uid="uid://dkunya2f7r7l3"]
 
 [ext_resource type="Script" path="res://Menu/LoadMenuUpgrades.gd" id="1_k7tko"]
-[ext_resource type="PackedScene" uid="uid://bv6ru718vt12a" path="res://Menu/UpgradeBoxer.tscn" id="3_1pvq0"]
+[ext_resource type="Script" path="res://Menu/UpgradeMenu.gd" id="1_o7mp2"]
+[ext_resource type="PackedScene" path="res://Menu/UpgradeBoxer.tscn" id="3_1pvq0"]
 [ext_resource type="PackedScene" uid="uid://u2bwpvu0jyny" path="res://Menu/UpgradeUnit.tscn" id="3_qdp31"]
-[ext_resource type="PackedScene" uid="uid://cf8gdlp07og17" path="res://Menu/UpgradeWheel.tscn" id="4_gloym"]
-[ext_resource type="PackedScene" uid="uid://frx24qahdn43" path="res://Menu/UpgradeDroid.tscn" id="5_ak6qp"]
+[ext_resource type="PackedScene" uid="uid://b08nxb25y3ene" path="res://unit/unit.tscn" id="4_7ivmv"]
+[ext_resource type="PackedScene" path="res://Menu/UpgradeDroid.tscn" id="5_ak6qp"]
+[ext_resource type="PackedScene" uid="uid://b6p8mi4ow43cn" path="res://unit/unit_boxer.tscn" id="6_qeq8n"]
+[ext_resource type="PackedScene" uid="uid://dli3v75tafgq" path="res://unit/unit_wheel_gunner.tscn" id="9_nohpq"]
 
-[node name="UpgradeMenu" type="Control"]
+[node name="UpgradeMenu" type="Control" node_paths=PackedStringArray("upgrades", "current_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_o7mp2")
+upgrades = NodePath("VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer")
+current_button = NodePath("VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(500, 500)
@@ -44,15 +52,17 @@ focus_next = NodePath("Button")
 alignment = 1
 script = ExtResource("1_k7tko")
 
-[node name="Button" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_qdp31")]
+[node name="Button" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("upgrade_menu") instance=ExtResource("3_qdp31")]
 layout_mode = 2
-id = "Test"
+unit_scene = ExtResource("4_7ivmv")
+upgrade_menu = NodePath("../../../../..")
 
-[node name="Button2" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("3_1pvq0")]
+[node name="Button2" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("upgrade_menu") instance=ExtResource("3_1pvq0")]
 layout_mode = 2
+unit_scene = ExtResource("6_qeq8n")
+upgrade_menu = NodePath("../../../../..")
 
-[node name="Button3" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("4_gloym")]
+[node name="Button4" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("upgrade_menu") instance=ExtResource("5_ak6qp")]
 layout_mode = 2
-
-[node name="Button4" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("5_ak6qp")]
-layout_mode = 2
+unit_scene = ExtResource("9_nohpq")
+upgrade_menu = NodePath("../../../../..")
