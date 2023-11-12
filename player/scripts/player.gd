@@ -15,6 +15,7 @@ var availableUnits = []
 @export var win_message_label: Label
 @export var menu: Control
 @export var hud: PlayerHud
+@export var spawn_game: SpawnGame
 
 var input_device: int = 0
 signal health_depleted
@@ -34,12 +35,17 @@ var current_health: int:
 				unit.behavior.change_state(StateDie.new())
 			await get_tree().create_timer(3).timeout
 			get_tree().reload_current_scene()
+			
 
 func _ready():
 	current_health = health
 	hud.update_health(current_health)
 	hud.position = global_position
 	hud.set_for_player(controller)
+	spawn_game.position = global_position
+	spawn_game.set_for_player(controller)
+	spawn_game.spawn_button_success.connect(create_unit)
+	spawn_game.start_game()
 	
 	
 	if controller == Controller.Controller1:
@@ -57,10 +63,10 @@ func _input(event):
 	#print(event, 'event')
 	if(event.device != input_device):
 		return
-	if(event.is_action_pressed("player_create_unit")):
-		create_unit()
-	if(event.is_action_pressed("player_open_menu")):
-		open_menu(event.device)
+	if (event is InputEventJoypadButton and event.pressed and not event.is_echo()):
+		spawn_game.spawn_button_pressed(event.button_index)
+#	if(event.is_action_pressed("player_open_menu")):
+#		open_menu(event.device)
 
 func create_unit():
 	if(controller == Controller.Controller1):

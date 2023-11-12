@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://6776s8a7d472"]
+
+[ext_resource type="Script" path="res://hud/spawn_game.gd" id="1_wps6e"]
+[ext_resource type="Texture2D" uid="uid://c8hx55iiy7uvd" path="res://hud/assets/buttons.png" id="2_nsc8t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g801v"]
+resource_local_to_scene = true
+atlas = ExtResource("2_nsc8t")
+region = Rect2(48, 16, 16, 16)
+
+[node name="SpawnGame" type="Control" node_paths=PackedStringArray("rythm_timer", "hit_timer", "button_timeout_timer", "timer_bar", "button_texture_rect", "panel")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wps6e")
+rythm_timer = NodePath("RythmTimer")
+hit_timer = NodePath("HitTimer")
+button_timeout_timer = NodePath("ButtonTimeoutTimer")
+timer_bar = NodePath("PanelContainer/HBoxContainer/TimerBar")
+button_texture_rect = NodePath("PanelContainer/HBoxContainer/MarginContainer/TextureRect")
+panel = NodePath("PanelContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 128.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TimerBar" type="ProgressBar" parent="PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+fill_mode = 3
+show_percentage = false
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_g801v")
+expand_mode = 2
+
+[node name="RythmTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ButtonTimeoutTimer" type="Timer" parent="."]
+one_shot = true
