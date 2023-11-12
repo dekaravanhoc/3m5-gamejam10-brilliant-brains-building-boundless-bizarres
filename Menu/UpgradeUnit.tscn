@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://u2bwpvu0jyny"]
+
+[ext_resource type="Script" path="res://Menu/BuyUnit.gd" id="1_hiiiq"]
+[ext_resource type="Texture2D" uid="uid://boor0puamdwbv" path="res://Menu/sample/gfx100s_sample_04_thum-1.jpg" id="2_dwy76"]
+
+[node name="Button" type="Button" node_paths=PackedStringArray("levelLabel", "costsLabel")]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hiiiq")
+levelLabel = NodePath("HBoxContainer/VBoxContainer2/UnitLevel")
+costsLabel = NodePath("HBoxContainer/VBoxContainer3/UnitCosts")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_dwy76")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Unitname" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Starter-Einheit"
+fit_content = true
+scroll_active = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="UnitLevel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2"]
+clip_contents = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Level: 0"
+fit_content = true
+scroll_active = false
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="UnitCosts" type="RichTextLabel" parent="HBoxContainer/VBoxContainer3"]
+clip_contents = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "100 Gold"
+fit_content = true
+scroll_active = false
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
