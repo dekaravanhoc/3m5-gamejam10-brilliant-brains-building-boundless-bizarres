@@ -68,6 +68,9 @@ unit_scene = ExtResource("4_7ivmv")
 upgrade_menu = NodePath("../../../../..")
 already_available = true
 
+[node name="UnitLevel" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button/HBoxContainer/VBoxContainer2" index="0"]
+text = "Level: 1"
+
 [node name="Button2" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("upgrade_menu") instance=ExtResource("3_1pvq0")]
 layout_mode = 2
 unit_scene = ExtResource("6_qeq8n")
@@ -113,6 +116,7 @@ theme_override_fonts/normal_font = ExtResource("7_i1qwt")
 [node name="UnitCosts" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button4/HBoxContainer/VBoxContainer3" index="0"]
 theme_override_fonts/normal_font = ExtResource("7_i1qwt")
 
+[editable path="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button"]
 [editable path="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button2"]
 [editable path="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button3"]
 [editable path="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button4"]
