@@ -12,6 +12,6 @@ func start():
 	tween.parallel()
 	tween.tween_property(behavior.unit.animated_sprite, "scale:x", behavior.unit.animated_sprite.scale.x, 1).from(0.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
 	tween.tween_callback(func():
-			behavior.change_state(StateMove.new())
+			behavior.change_state(behavior.start_transition_state.new())
 			)
 

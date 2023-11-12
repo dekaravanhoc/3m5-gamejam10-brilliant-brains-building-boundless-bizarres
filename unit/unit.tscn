@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b08nxb25y3ene"]
+[gd_scene load_steps=39 format=3 uid="uid://b08nxb25y3ene"]
 
 [ext_resource type="Script" path="res://unit/unit.gd" id="1_6mxwx"]
 [ext_resource type="Script" path="res://unit/upgrade_functions/upgrade_function.gd" id="2_3lle1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ch3mgfl7atua6" path="res://unit/assets/ball_and_chain_bot/charge.png" id="3_iixhc"]
 [ext_resource type="Script" path="res://unit/statemachine/states/spawn.gd" id="4_16akq"]
 [ext_resource type="Texture2D" uid="uid://ddwlb876x6p5w" path="res://unit/assets/ball_and_chain_bot/death.png" id="4_c4n51"]
+[ext_resource type="Script" path="res://unit/statemachine/states/move.gd" id="9_k48pn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kgue4"]
 resource_local_to_scene = true
@@ -257,6 +258,7 @@ offset = Vector2(0, -13)
 script = ExtResource("3_auhp4")
 unit = NodePath("..")
 start_state = ExtResource("4_16akq")
+start_transition_state = ExtResource("9_k48pn")
 
 [node name="AttackBox" type="Area2D" parent="."]
 position = Vector2(0, -48)
