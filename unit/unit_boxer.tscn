@@ -231,6 +231,7 @@ b = Vector2(30, 0)
 health = 15
 dps = 3
 speed = 220
+damage_taken_mod = 5
 unit_id = "boxer"
 
 [node name="UnitCollision" parent="." index="0"]

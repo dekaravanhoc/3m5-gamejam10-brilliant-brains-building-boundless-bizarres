@@ -58,6 +58,6 @@ func _on_pressed():
 	buy_upgrade()
 
 func _input(event):
-	if(event.device == upgrade_menu.player.controller and upgrade_menu.current_button == self):
+	if(event.device == upgrade_menu.player.controller and upgrade_menu.current_button == self and upgrade_menu.is_visible_in_tree()):
 		if(event.is_action_pressed("player_buy_upgrade")):
 			_on_pressed()

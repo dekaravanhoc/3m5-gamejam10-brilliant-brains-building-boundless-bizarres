@@ -56,6 +56,7 @@ win_message_label = NodePath("../Text/CenterContainer/WinMessage")
 menu = NodePath("../CanvasLayer/HBoxContainer/MarginContainer/UpgradeMenuPlayer1")
 
 [node name="NecromancerPlayer1" parent="base_player" instance=ExtResource("3_5jegy")]
+gold_drop = 1
 
 [node name="base_player2" parent="." node_paths=PackedStringArray("enemy_player", "win_message_label", "menu") instance=ExtResource("1_7aaju")]
 position = Vector2(1827, 1000)
@@ -65,6 +66,7 @@ win_message_label = NodePath("../Text/CenterContainer/WinMessage")
 menu = NodePath("../CanvasLayer/HBoxContainer/MarginContainer2/UpgradeMenuPlayer2")
 
 [node name="NecromancerPlayer2" parent="base_player2" instance=ExtResource("4_6q0by")]
+gold_drop = 1
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1

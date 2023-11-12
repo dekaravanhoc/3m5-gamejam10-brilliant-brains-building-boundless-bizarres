@@ -260,6 +260,7 @@ shape = SubResource("CircleShape2D_3aigd")
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_q5b82")
 animation = &"move"
+frame = 0
 frame_progress = 0.253329
 offset = Vector2(0, -16)
 

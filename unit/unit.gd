@@ -41,12 +41,12 @@ var upgrade_functions: Dictionary = {
 		dps *= level
 		,
 	UpgradeFunctions.Attack: func(level: int):
-		health *= int(level/2)
+		health *= int(max(1, level/2))
 		dps *= level * 2
 		,
 	UpgradeFunctions.HP: func(level: int):
 		health *= level * 2
-		dps *= int(level/2)
+		dps *= int(max(1, level/2))
 		,
 	}
 
