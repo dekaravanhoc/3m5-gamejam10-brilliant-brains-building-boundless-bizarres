@@ -41,11 +41,11 @@ size_flags_vertical = 4
 
 [node name="Unitname" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
 clip_contents = false
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[center]Starter-Einheit"
+text = "Upgrade Thunderpuncher"
 fit_content = true
 scroll_active = false
 

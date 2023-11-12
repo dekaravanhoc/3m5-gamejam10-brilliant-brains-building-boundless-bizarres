@@ -15,9 +15,10 @@ var navigationArrow: Panel
 
 func _ready():
 	navigationArrow = get_node("Panel")
+	costsLabel.set_text(str(costs) + " Gold")
 	if already_available:
 		level = 1
-		costs = int(round(costs * 1.05 ** (level / 3)))
+		costs = int(round(costs * 1.05 ** (level / 4) / 2))
 		costsLabel.set_text(str(costs) + " Gold")
 		addToPlayerUnitsArray()
 
