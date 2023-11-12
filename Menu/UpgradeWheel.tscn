@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://u2bwpvu0jyny"]
+[gd_scene load_steps=3 format=3 uid="uid://cf8gdlp07og17"]
 
-[ext_resource type="Script" path="res://Menu/BuyUnit.gd" id="1_hiiiq"]
-[ext_resource type="Texture2D" uid="uid://q3qk7sitkug2" path="res://unit/assets/ball_and_chain_bot/hit_menu.png" id="2_ekn3t"]
+[ext_resource type="Script" path="res://Menu/BuyUnit.gd" id="1_bp4bi"]
+[ext_resource type="Texture2D" uid="uid://e665gpsswutb" path="res://unit/assets/bot_wheel/charge_menu.png" id="2_0htfn"]
 
 [node name="Button" type="Button" node_paths=PackedStringArray("levelLabel", "costsLabel")]
 custom_minimum_size = Vector2(0, 100)
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_hiiiq")
+script = ExtResource("1_bp4bi")
 levelLabel = NodePath("HBoxContainer/VBoxContainer2/UnitLevel")
 costsLabel = NodePath("HBoxContainer/VBoxContainer3/UnitCosts")
 
@@ -24,7 +24,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_ekn3t")
+texture = ExtResource("2_0htfn")
 expand_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
