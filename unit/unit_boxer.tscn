@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b6p8mi4ow43cn"]
+[gd_scene load_steps=35 format=3 uid="uid://328i2m2lfiom"]
 
 [ext_resource type="PackedScene" uid="uid://b08nxb25y3ene" path="res://unit/unit.tscn" id="1_3c12p"]
 [ext_resource type="Texture2D" uid="uid://df50ljpruijh" path="res://unit/assets/spirit_boxer/attack 1.png" id="2_m8x1c"]
@@ -119,7 +119,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_end",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -154,7 +154,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0qbni")
 }],
-"loop": true,
+"loop": false,
 "name": &"charge",
 "speed": 8.0
 }, {
@@ -221,13 +221,14 @@ animations = [{
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_4g0jx"]
 resource_local_to_scene = true
-b = Vector2(270, 0)
+b = Vector2(100, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_r7vat"]
 resource_local_to_scene = true
-b = Vector2(160, 0)
+b = Vector2(30, 0)
 
-[node name="Unit" instance=ExtResource("1_3c12p")]
+[node name="UnitBoxer" instance=ExtResource("1_3c12p")]
+health = 15
 dps = 3
 
 [node name="UnitCollision" parent="." index="0"]
@@ -235,9 +236,9 @@ shape = SubResource("CircleShape2D_oea1k")
 
 [node name="UnitAnimation" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_b52wk")
-animation = &"attack_end"
+animation = &"charge"
 frame = 0
-offset = Vector2(52, -13)
+offset = Vector2(52, -15)
 
 [node name="AttackShape" parent="AttackBox" index="0"]
 shape = SubResource("SegmentShape2D_4g0jx")
