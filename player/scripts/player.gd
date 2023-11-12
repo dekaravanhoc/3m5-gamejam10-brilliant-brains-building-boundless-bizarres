@@ -14,6 +14,7 @@ var availableUnits = []
 @export var enemy_player: Player
 @export var win_message_label: Label
 @export var menu: Control
+@export var hud: PlayerHud
 
 var input_device: int = 0
 signal health_depleted
@@ -36,7 +37,11 @@ var current_health: int:
 
 func _ready():
 	current_health = health
-	$hud.update_health(current_health)
+	hud.update_health(current_health)
+	hud.position = global_position
+	hud.set_for_player(controller)
+	
+	
 	if controller == Controller.Controller1:
 		collision_layer = 1
 		input_device = 0
@@ -67,19 +72,19 @@ func create_unit():
 	
 func hit(amount: int):
 	current_health -= amount
-	$hud.update_health(100.0 * current_health / health)
+	hud.update_health(100.0 * current_health / health)
 		
 
 
 func collect_gold(amount: int):
 	money += amount
-	$hud.update_money(money)
+	hud.update_money(money)
 
 func pay_gold(amount: int):
 	if not has_enough_gold(amount):
 		return
 	money -= amount
-	$hud.update_money(money)
+	hud.update_money(money)
 
 func has_enough_gold(amount: int):
 	return money >= amount

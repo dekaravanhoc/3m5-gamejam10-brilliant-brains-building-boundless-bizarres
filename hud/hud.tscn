@@ -1,31 +1,72 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmi8saio7oelk"]
+[gd_scene load_steps=5 format=3 uid="uid://bmi8saio7oelk"]
 
 [ext_resource type="Script" path="res://hud/hud.gd" id="1_8pk10"]
 
-[node name="hud" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1aea"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.176471, 0.176471, 0.176471, 0.666667)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4aep"]
+bg_color = Color(0.145098, 0.721569, 0, 0.0509804)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.494118)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rpg0"]
+bg_color = Color(0.145098, 0.721569, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="hud" type="Control" node_paths=PackedStringArray("health_bar", "money_label", "hud_panel")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_8pk10")
+health_bar = NodePath("HudPanel/VBoxContainer/health_bar")
+money_label = NodePath("HudPanel/VBoxContainer/money_player")
+hud_panel = NodePath("HudPanel")
 
-[node name="money_player" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = -22.0
-offset_top = -709.0
-offset_right = 118.0
-offset_bottom = -659.0
-grow_horizontal = 2
-rotation = -1.5708
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 12
+[node name="HudPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+offset_right = 500.0
+offset_bottom = 120.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v1aea")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HudPanel"]
+layout_mode = 2
+
+[node name="health_bar" type="ProgressBar" parent="HudPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_r4aep")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3rpg0")
+value = 50.0
+show_percentage = false
+
+[node name="money_player" type="Label" parent="HudPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
 theme_override_font_sizes/font_size = 32
 text = "Money: 0"
-
-[node name="health_bar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_left = -11.0
-offset_top = -125.0
-offset_right = 516.0
-offset_bottom = -98.0
-rotation = -1.5719

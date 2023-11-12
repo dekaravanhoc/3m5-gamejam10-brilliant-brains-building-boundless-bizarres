@@ -1,19 +1,25 @@
+class_name PlayerHud
 extends Control
 
+@export var health_bar: ProgressBar
+@export var money_label: Label
+@export var hud_panel: PanelContainer
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
+func set_for_player(controller: Player.Controller):
+	hud_panel.size = Vector2(500, 120)
+	hud_panel.position.y -= 900
+	if(controller == Player.Controller.Controller2):
+		hud_panel.position.x -= 500
+		health_bar.fill_mode = ProgressBar.FILL_END_TO_BEGIN
+		money_label.size_flags_horizontal = Control.SIZE_SHRINK_END
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func update_money(money):
-	$money_player.text = "Money: " + str(money)
+	money_label.text = "Money: " + str(money)
+
 
 func update_health(health):
-	$health_bar.value = health
+	health_bar.value = health
 	

@@ -1,6 +1,6 @@
 class_name Unit
 extends Area2D
-
+# TODO: attack order change
 signal health_changed(value: int)
 signal gold_dropped(amount: int)
 signal killed
