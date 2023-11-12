@@ -5,7 +5,6 @@ enum Controller {Controller1, Controller2}
 
 var health: int = 10000
 var money: int = 100000
-var money: int = 1000
 var dmg = 0
 var def: int = 1
 
