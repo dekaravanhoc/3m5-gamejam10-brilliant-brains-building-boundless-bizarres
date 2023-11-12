@@ -5,7 +5,7 @@ extends Control
 signal spawn_button_success
 
 const RYTHM_TIMER_BASE_TIME = 4.0
-const HIT_TIMER_TIME = 1
+const HIT_TIMER_TIME = 1.0
 const BUTTON_TIMEOUT_TIMER_TIME = 0.5
 
 
@@ -57,7 +57,9 @@ func set_for_player(controller: Player.Controller):
 func start_game():
 	game_step = 1
 	rythm_timer.start(RYTHM_TIMER_BASE_TIME)
-	
+	hit_timer.start()
+	current_key_to_press = keys.pick_random()
+	button_texture_atlas.region = key_to_texture_rect[current_key_to_press]
 
 
 func stop_game():
@@ -93,10 +95,9 @@ func _on_rythm_timer_timeout():
 	hit_timer.start()
 	if last_key_sucess:
 		game_step = min(RYTHM_TIMER_BASE_TIME/HIT_TIMER_TIME, game_step + 1)
+	else:
+		game_step = 1
 	last_key_sucess = false
 	rythm_timer.start(RYTHM_TIMER_BASE_TIME / game_step)
 	current_key_to_press = keys.pick_random()
 	button_texture_atlas.region = key_to_texture_rect[current_key_to_press]
-	
-
-
