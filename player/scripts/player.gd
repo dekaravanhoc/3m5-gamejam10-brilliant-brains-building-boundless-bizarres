@@ -5,6 +5,7 @@ enum Controller {Controller1, Controller2}
 
 var health: int = 10000
 var money: int = 100000
+var money: int = 1000
 var dmg = 0
 var def: int = 1
 
@@ -87,6 +88,13 @@ func _input(event):
 			var new_index = wrapi(availableUnits.find(current_unit) - 1, 0, availableUnits.size())
 			current_unit = availableUnits[new_index]
 			spawn_game.set_spawn_unit_texture(current_unit.unit_texture)
+
+func getUnitLevel(current_unit: Unit):
+	var level = 0
+	for unit in availableUnits:
+		if (unit.id == current_unit.unit_id):
+			level = unit.level
+	return level
 
 func create_unit():
 	if(controller == Controller.Controller1):
