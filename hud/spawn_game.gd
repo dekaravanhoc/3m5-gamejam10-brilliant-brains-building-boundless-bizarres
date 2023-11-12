@@ -60,9 +60,6 @@ func set_for_player(controller: Player.Controller):
 func start_game():
 	game_step = 1
 	rythm_timer.start(RYTHM_TIMER_BASE_TIME)
-	hit_timer.start()
-	current_key_to_press = keys.pick_random()
-	button_texture_atlas.region = key_to_texture_rect[current_key_to_press]
 	show()
 
 

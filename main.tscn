@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dw6nkaspcl63u"]
+[gd_scene load_steps=10 format=3 uid="uid://dw6nkaspcl63u"]
 
 [ext_resource type="PackedScene" uid="uid://bwr66ksxsn2tm" path="res://player/player.tscn" id="1_7aaju"]
 [ext_resource type="Texture2D" uid="uid://2lit1b6p0sj7" path="res://assets/vast_land.png" id="2_bvo7h"]
@@ -10,10 +10,7 @@
 [ext_resource type="Script" path="res://main_menu.gd" id="5_fd2b6"]
 [ext_resource type="AudioStream" uid="uid://bqwyw6rm5m1c2" path="res://assets/Gamejam3.mp3" id="6_bbs5k"]
 
-[sub_resource type="GDScript" id="GDScript_y7w3y"]
-
 [node name="Main" type="Node2D"]
-script = SubResource("GDScript_y7w3y")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -59,7 +56,6 @@ win_message_label = NodePath("../Text/CenterContainer/WinMessage")
 menu = NodePath("../CanvasLayer/HBoxContainer/MarginContainer/UpgradeMenuPlayer1")
 
 [node name="NecromancerPlayer1" parent="base_player" instance=ExtResource("3_5jegy")]
-speed = 0
 
 [node name="base_player2" parent="." node_paths=PackedStringArray("enemy_player", "win_message_label", "menu") instance=ExtResource("1_7aaju")]
 position = Vector2(1827, 1000)
@@ -69,7 +65,6 @@ win_message_label = NodePath("../Text/CenterContainer/WinMessage")
 menu = NodePath("../CanvasLayer/HBoxContainer/MarginContainer2/UpgradeMenuPlayer2")
 
 [node name="NecromancerPlayer2" parent="base_player2" instance=ExtResource("4_6q0by")]
-speed = 0
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
