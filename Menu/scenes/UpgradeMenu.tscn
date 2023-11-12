@@ -54,13 +54,14 @@ script = ExtResource("1_k7tko")
 
 [node name="Button" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("upgrade_menu") instance=ExtResource("3_qdp31")]
 layout_mode = 2
+costs = 50
 unit_scene = ExtResource("4_7ivmv")
 upgrade_menu = NodePath("../../../../..")
 already_available = true
 
 [node name="Button2" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("upgrade_menu") instance=ExtResource("3_1pvq0")]
 layout_mode = 2
-costs = 102
+costs = 100
 unit_scene = ExtResource("6_qeq8n")
 upgrade_menu = NodePath("../../../../..")
 
