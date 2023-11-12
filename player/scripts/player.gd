@@ -85,7 +85,7 @@ func has_enough_gold(amount: int):
 	return money >= amount
 
 func open_menu(player: int):
-	var children: Button = menu.get_children()[0].get_children()[0].get_children()[0].get_children()[0].get_children()[0].get_children()[2]
+	var children: Button = menu.get_children()[0].get_children()[0].get_children()[0].get_children()[0].get_children()[0].get_children()[0]
 	menu.visible = !menu.is_visible_in_tree()
 	children.grab_focus()
 	print("menu", player)

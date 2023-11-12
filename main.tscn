@@ -27,7 +27,6 @@ script = ExtResource("2_ebdhl")
 player = NodePath("../../../base_player")
 
 [node name="MenuControlPlayer2" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchor_left = 0.5
 anchor_right = 1.0
@@ -41,14 +40,14 @@ player = NodePath("../../../base_player2")
 [node name="base_player" parent="." node_paths=PackedStringArray("enemy_player", "win_message_label", "menu") instance=ExtResource("1_7aaju")]
 position = Vector2(44, 1000)
 enemy_player = NodePath("../base_player2")
-win_message_label = NodePath("")
+win_message_label = NodePath("../Text/CenterContainer/WinMessage")
 menu = NodePath("../CanvasLayer/MenuControlPlayer1")
 
 [node name="base_player2" parent="." node_paths=PackedStringArray("enemy_player", "win_message_label", "menu") instance=ExtResource("1_7aaju")]
 position = Vector2(1850, 1000)
 controller = 1
 enemy_player = NodePath("../base_player")
-win_message_label = NodePath("")
+win_message_label = NodePath("../Text/CenterContainer/WinMessage")
 menu = NodePath("../CanvasLayer/MenuControlPlayer2")
 
 [node name="Background" type="CanvasLayer" parent="."]
