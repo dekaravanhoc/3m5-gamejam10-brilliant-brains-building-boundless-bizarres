@@ -53,3 +53,8 @@ func _input(event):
 	if(event.device == upgrade_menu.player.controller and upgrade_menu.current_button == self):
 		if(event.is_action_pressed("player_buy_upgrade")):
 			_on_pressed()
+	
+		if (event.is_action_pressed("player_menu_down") and player.controller == event.device):
+			print("down pressed for player ", event.device)
+		if (event.is_action_pressed("player_menu_up") and player.controller == event.device):
+			print("up pressed for player ", event.device)
