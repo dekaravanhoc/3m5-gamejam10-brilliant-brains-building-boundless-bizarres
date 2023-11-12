@@ -11,7 +11,9 @@ func start():
 	_attack()
 
 
-func _attack():
+func _attack() -> void:
+	if !is_instance_valid(behavior):
+		return
 	if behavior.unit.attack_range.get_overlapping_areas().is_empty():
 		behavior.change_state(StateMove.new())
 		return
