@@ -231,10 +231,10 @@ b = Vector2(300, 0)
 resource_local_to_scene = true
 b = Vector2(190, 0)
 
-[node name="Unit" instance=ExtResource("1_811s0")]
+[node name="UnitGunner" instance=ExtResource("1_811s0")]
 health = 8
 dps = 1
-speed = 90
+speed = 175
 
 [node name="UnitCollision" parent="." index="0"]
 shape = SubResource("CircleShape2D_173av")

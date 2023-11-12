@@ -230,6 +230,7 @@ b = Vector2(30, 0)
 [node name="UnitBoxer" instance=ExtResource("1_3c12p")]
 health = 15
 dps = 3
+speed = 220
 
 [node name="UnitCollision" parent="." index="0"]
 shape = SubResource("CircleShape2D_oea1k")
