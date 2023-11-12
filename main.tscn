@@ -49,13 +49,13 @@ layout_mode = 2
 player = NodePath("../../../../base_player2")
 
 [node name="base_player" parent="." node_paths=PackedStringArray("enemy_player", "win_message_label", "menu") instance=ExtResource("1_7aaju")]
-position = Vector2(44, 1000)
+position = Vector2(68, 1000)
 enemy_player = NodePath("../base_player2")
 win_message_label = NodePath("../Text/CenterContainer/WinMessage")
 menu = NodePath("../CanvasLayer/HBoxContainer/MarginContainer/UpgradeMenuPlayer1")
 
 [node name="base_player2" parent="." node_paths=PackedStringArray("enemy_player", "win_message_label", "menu") instance=ExtResource("1_7aaju")]
-position = Vector2(1850, 1000)
+position = Vector2(1862, 1000)
 controller = 1
 enemy_player = NodePath("../base_player")
 win_message_label = NodePath("../Text/CenterContainer/WinMessage")
