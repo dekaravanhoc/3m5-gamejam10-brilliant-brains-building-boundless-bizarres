@@ -1,9 +1,45 @@
-[gd_scene load_steps=25 format=3 uid="uid://bwr66ksxsn2tm"]
+[gd_scene load_steps=26 format=3 uid="uid://bwr66ksxsn2tm"]
 
 [ext_resource type="Script" path="res://player/scripts/player.gd" id="1_qtjqx"]
 [ext_resource type="Texture2D" uid="uid://boqgmtu8wjl0f" path="res://player/assets/portal_anim.png" id="2_33rxy"]
 [ext_resource type="PackedScene" uid="uid://bmi8saio7oelk" path="res://hud/hud.tscn" id="3_3lh2q"]
 [ext_resource type="PackedScene" uid="uid://6776s8a7d472" path="res://hud/spawn_game.tscn" id="4_fxlp1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqhtf"]
+atlas = ExtResource("2_33rxy")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvl7o"]
+atlas = ExtResource("2_33rxy")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7qb3"]
+atlas = ExtResource("2_33rxy")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_catvk"]
+atlas = ExtResource("2_33rxy")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0appb"]
+atlas = ExtResource("2_33rxy")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioubb"]
+atlas = ExtResource("2_33rxy")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ag6s"]
+atlas = ExtResource("2_33rxy")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o8ic"]
+atlas = ExtResource("2_33rxy")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wwqn"]
+atlas = ExtResource("2_33rxy")
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22ewr"]
 atlas = ExtResource("2_33rxy")
@@ -41,44 +77,95 @@ region = Rect2(896, 0, 128, 128)
 atlas = ExtResource("2_33rxy")
 region = Rect2(1024, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ag6s"]
-atlas = ExtResource("2_33rxy")
-region = Rect2(640, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0o8ic"]
-atlas = ExtResource("2_33rxy")
-region = Rect2(512, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3wwqn"]
-atlas = ExtResource("2_33rxy")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_catvk"]
-atlas = ExtResource("2_33rxy")
-region = Rect2(1024, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0appb"]
-atlas = ExtResource("2_33rxy")
-region = Rect2(896, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ioubb"]
-atlas = ExtResource("2_33rxy")
-region = Rect2(768, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqhtf"]
-atlas = ExtResource("2_33rxy")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fvl7o"]
-atlas = ExtResource("2_33rxy")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t7qb3"]
-atlas = ExtResource("2_33rxy")
-region = Rect2(0, 0, 128, 128)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_2c0dt"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqhtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvl7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7qb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7qb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvl7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqhtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqhtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqhtf")
+}],
+"loop": true,
+"name": &"100",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_catvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0appb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioubb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioubb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0appb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_catvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_catvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_catvk")
+}],
+"loop": true,
+"name": &"20",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ag6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o8ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wwqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wwqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o8ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ag6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ag6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ag6s")
+}],
+"loop": true,
+"name": &"60",
+"speed": 4.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_22ewr")
@@ -107,113 +194,30 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ibiff")
 }],
-"loop": true,
+"loop": false,
 "name": &"all_frames",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ag6s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0o8ic")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3wwqn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3wwqn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0o8ic")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ag6s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ag6s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ag6s")
-}],
-"loop": true,
-"name": &"cracked",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_catvk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0appb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ioubb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ioubb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0appb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_catvk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_catvk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_catvk")
-}],
-"loop": true,
-"name": &"damaged",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqhtf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fvl7o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t7qb3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t7qb3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fvl7o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqhtf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqhtf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqhtf")
-}],
-"loop": true,
-"name": &"default",
-"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itr4k"]
 size = Vector2(184, 172)
 
-[node name="base_player" type="Area2D" node_paths=PackedStringArray("hud", "spawn_game")]
+[sub_resource type="Gradient" id="Gradient_03ra8"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[node name="base_player" type="Area2D" node_paths=PackedStringArray("hud", "spawn_game", "portal_anim", "explosion")]
 script = ExtResource("1_qtjqx")
-controller = null
 hud = NodePath("CanvasLayer/hud")
 spawn_game = NodePath("CanvasLayer/SpawnGame")
+portal_anim = NodePath("AnimatedSprite2D")
+explosion = NodePath("CPUParticles2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -95)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2c0dt")
-animation = &"damaged"
-autoplay = "damaged"
+animation = &"60"
+autoplay = "100"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -227,3 +231,18 @@ layer = 10
 offset_right = 172.0
 
 [node name="SpawnGame" parent="CanvasLayer" instance=ExtResource("4_fxlp1")]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 300
+one_shot = true
+explosiveness = 0.77
+emission_shape = 3
+emission_rect_extents = Vector2(50, 0)
+direction = Vector2(0, -1)
+initial_velocity_min = 600.0
+initial_velocity_max = 1200.0
+scale_amount_min = 10.0
+scale_amount_max = 20.0
+color = Color(1, 0, 1, 0.435294)
+color_ramp = SubResource("Gradient_03ra8")

@@ -17,6 +17,8 @@ var current_unit: UnitUpgrade
 @export var menu: UpgradeMenu
 @export var hud: PlayerHud
 @export var spawn_game: SpawnGame
+@export var portal_anim: AnimatedSprite2D
+@export var explosion: CPUParticles2D
 
 var input_device: int = 0
 signal health_depleted
@@ -24,6 +26,11 @@ signal health_depleted
 var current_health: int:
 	set(value):
 		current_health = min(health, max(0, value))
+		if current_health/float(health) <= 0.2:
+			portal_anim.play("20")
+		elif current_health/float(health) <= 0.6:
+			portal_anim.play("60")
+		
 		if current_health == 0:
 			health_depleted.emit()
 			win_message_label.show()
@@ -37,6 +44,9 @@ var current_health: int:
 			spawn_game.hide()
 			spawn_game.stop_game()
 			hud.hide()
+			explosion.emitting = true
+			var tween = create_tween()
+			tween.tween_property(portal_anim, "modulate:a", 0, 1)
 			await get_tree().create_timer(3).timeout
 			get_tree().reload_current_scene()
 			
@@ -98,10 +108,10 @@ func getUnitLevel(current_unit: Unit):
 func create_unit():
 	if(controller == Controller.Controller1):
 		var unit_to_spawn = current_unit.unit_scene.instantiate()
-		unit_to_spawn.spawn(self.get_parent(), Unit.PLAYER.Player1, self.global_position + Vector2(20,0), enemy_player.collect_gold, current_unit.level)
+		unit_to_spawn.spawn(self.get_parent(), Unit.PLAYER.Player1, self.global_position, enemy_player.collect_gold, current_unit.level)
 	if(controller == Controller.Controller2):
 		var unit_to_spawn = current_unit.unit_scene.instantiate()
-		unit_to_spawn.spawn(self.get_parent(), Unit.PLAYER.Player2, self.global_position - Vector2(20,0), enemy_player.collect_gold, current_unit.level)
+		unit_to_spawn.spawn(self.get_parent(), Unit.PLAYER.Player2, self.global_position, enemy_player.collect_gold, current_unit.level)
 
 func hit(amount: int):
 	current_health -= amount
