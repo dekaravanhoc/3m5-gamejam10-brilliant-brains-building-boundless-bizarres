@@ -22,9 +22,9 @@ enum UpgradeFunctions {Normal, Attack, HP}
 @export var upgrade_function: UpgradeFunctions = UpgradeFunctions.Normal
 @export var damage_taken_mod: int = 1
 @export var unit_id: String
+@export var current_player: PLAYER = PLAYER.Player1
 
 var hit_tween: Tween
-var current_player: PLAYER = PLAYER.Player1
 var gold_collect_function: Callable = func(_amount: int): return
 
 var current_move_direction: Vector2:
