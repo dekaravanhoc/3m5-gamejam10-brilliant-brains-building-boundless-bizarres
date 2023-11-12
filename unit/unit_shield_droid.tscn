@@ -120,6 +120,16 @@ region = Rect2(0, 155, 90, 31)
 [sub_resource type="SpriteFrames" id="SpriteFrames_q5b82"]
 resource_local_to_scene = true
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack_end",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack_start",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_224t8")
@@ -249,9 +259,8 @@ shape = SubResource("CircleShape2D_3aigd")
 [node name="UnitAnimation" parent="." index="1"]
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_q5b82")
-animation = &"defend"
-frame = 0
-frame_progress = 0.111532
+animation = &"move"
+frame_progress = 0.253329
 offset = Vector2(0, -16)
 
 [node name="Behavior" parent="." index="2"]
