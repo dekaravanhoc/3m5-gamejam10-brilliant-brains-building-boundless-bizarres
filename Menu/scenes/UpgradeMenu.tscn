@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkunya2f7r7l3"]
+[gd_scene load_steps=14 format=3 uid="uid://dkunya2f7r7l3"]
 
 [ext_resource type="Script" path="res://Menu/scripts/LoadMenuUpgrades.gd" id="1_k7tko"]
 [ext_resource type="Script" path="res://Menu/scripts/UpgradeMenu.gd" id="1_o7mp2"]
@@ -7,7 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://b08nxb25y3ene" path="res://unit/unit.tscn" id="4_7ivmv"]
 [ext_resource type="PackedScene" uid="uid://frx24qahdn43" path="res://Menu/scenes/UpgradeDroid.tscn" id="5_ak6qp"]
 [ext_resource type="PackedScene" uid="uid://328i2m2lfiom" path="res://unit/unit_boxer.tscn" id="6_qeq8n"]
+[ext_resource type="PackedScene" uid="uid://g0uhouxhnp44" path="res://unit/unit_shield_droid.tscn" id="7_10alg"]
+[ext_resource type="FontFile" uid="uid://doe4vbp6pthlm" path="res://assets/font/Celtica-Book.ttf" id="7_i1qwt"]
+[ext_resource type="Texture2D" uid="uid://7j3uswephb2x" path="res://unit/assets/shield_droid/static idle_menu.png" id="8_d5jqp"]
 [ext_resource type="PackedScene" uid="uid://dli3v75tafgq" path="res://unit/unit_wheel_gunner.tscn" id="9_nohpq"]
+[ext_resource type="Texture2D" uid="uid://bjx1kacc04nop" path="res://unit/assets/bot_wheel/wake.png" id="11_jemec"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21hs5"]
+atlas = ExtResource("11_jemec")
+region = Rect2(12, 4, 20, 23)
 
 [node name="UpgradeMenu" type="Control" node_paths=PackedStringArray("upgrades", "current_button")]
 layout_mode = 3
@@ -54,6 +62,7 @@ script = ExtResource("1_k7tko")
 
 [node name="Button" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("upgrade_menu") instance=ExtResource("3_qdp31")]
 layout_mode = 2
+level = 1
 costs = 50
 unit_scene = ExtResource("4_7ivmv")
 upgrade_menu = NodePath("../../../../..")
@@ -61,11 +70,49 @@ already_available = true
 
 [node name="Button2" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("upgrade_menu") instance=ExtResource("3_1pvq0")]
 layout_mode = 2
-costs = 100
 unit_scene = ExtResource("6_qeq8n")
 upgrade_menu = NodePath("../../../../..")
+
+[node name="Unitname" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button2/HBoxContainer/VBoxContainer" index="0"]
+theme_override_fonts/normal_font = ExtResource("7_i1qwt")
+
+[node name="UnitLevel" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button2/HBoxContainer/VBoxContainer2" index="0"]
+theme_override_fonts/normal_font = ExtResource("7_i1qwt")
+
+[node name="UnitCosts" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button2/HBoxContainer/VBoxContainer3" index="0"]
+theme_override_fonts/normal_font = ExtResource("7_i1qwt")
+
+[node name="Button3" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("upgrade_menu") instance=ExtResource("3_qdp31")]
+layout_mode = 2
+unit_scene = ExtResource("7_10alg")
+upgrade_menu = NodePath("../../../../..")
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button3/HBoxContainer" index="0"]
+texture = ExtResource("8_d5jqp")
+
+[node name="Unitname" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button3/HBoxContainer/VBoxContainer" index="0"]
+text = "Upgrade Defender"
+
+[node name="Panel" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button3" index="1"]
+visible = false
 
 [node name="Button4" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("upgrade_menu") instance=ExtResource("5_ak6qp")]
 layout_mode = 2
 unit_scene = ExtResource("9_nohpq")
 upgrade_menu = NodePath("../../../../..")
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button4/HBoxContainer" index="0"]
+texture = SubResource("AtlasTexture_21hs5")
+
+[node name="Unitname" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button4/HBoxContainer/VBoxContainer" index="0"]
+theme_override_fonts/normal_font = ExtResource("7_i1qwt")
+
+[node name="UnitLevel" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button4/HBoxContainer/VBoxContainer2" index="0"]
+theme_override_fonts/normal_font = ExtResource("7_i1qwt")
+
+[node name="UnitCosts" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button4/HBoxContainer/VBoxContainer3" index="0"]
+theme_override_fonts/normal_font = ExtResource("7_i1qwt")
+
+[editable path="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button2"]
+[editable path="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button3"]
+[editable path="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer/Button4"]
