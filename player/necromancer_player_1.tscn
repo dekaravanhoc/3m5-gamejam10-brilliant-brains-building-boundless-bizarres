@@ -300,7 +300,7 @@ b = Vector2(300, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pxdhn"]
 resource_local_to_scene = true
-b = Vector2(160, 0)
+b = Vector2(300, 0)
 
 [node name="NecromancerPlayer1" instance=ExtResource("1_3xysc")]
 monitorable = false
@@ -309,19 +309,19 @@ dps = 40
 speed = 0
 
 [node name="UnitCollision" parent="." index="0"]
-position = Vector2(0, -595)
+position = Vector2(47, -492)
 shape = SubResource("CircleShape2D_vvxco")
 
 [node name="UnitAnimation" parent="." index="1"]
-position = Vector2(0, -664)
+position = Vector2(52, -561)
 sprite_frames = SubResource("SpriteFrames_fkqr2")
 animation = &"move"
 frame = 0
 
 [node name="AttackShape" parent="AttackBox" index="0"]
-position = Vector2(175, 0)
+position = Vector2(110, 0)
 shape = SubResource("SegmentShape2D_eim3a")
 
 [node name="AttackRangeShape" parent="AttackRange" index="0"]
-position = Vector2(231, 0)
+position = Vector2(110, 0)
 shape = SubResource("SegmentShape2D_pxdhn")
