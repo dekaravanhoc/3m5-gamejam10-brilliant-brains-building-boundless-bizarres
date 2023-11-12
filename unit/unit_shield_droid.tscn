@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://g0uhouxhnp44"]
+[gd_scene load_steps=39 format=3 uid="uid://g0uhouxhnp44"]
 
 [ext_resource type="PackedScene" uid="uid://b08nxb25y3ene" path="res://unit/unit.tscn" id="1_hgare"]
 [ext_resource type="Texture2D" uid="uid://b8iqducfnsbg4" path="res://unit/assets/shield_droid/shield puulse.png" id="2_oe7jq"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cj2pp7brrv8rg" path="res://unit/assets/shield_droid/shield finished.png" id="4_wph2w"]
 [ext_resource type="Texture2D" uid="uid://drw1naaksa5l8" path="res://unit/assets/shield_droid/shock attack.png" id="5_6u1la"]
 [ext_resource type="Texture2D" uid="uid://jwfd60f67fgp" path="res://unit/assets/shield_droid/walk.png" id="6_s2n2v"]
+[ext_resource type="Script" path="res://unit/statemachine/states/move_defend.gd" id="8_4dvho"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3aigd"]
 resource_local_to_scene = true
@@ -40,27 +41,27 @@ region = Rect2(0, 155, 90, 31)
 atlas = ExtResource("3_to1eg")
 region = Rect2(0, 279, 90, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lew5a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_66qxh"]
 atlas = ExtResource("2_oe7jq")
 region = Rect2(0, 0, 90, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b41bw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn2t6"]
 atlas = ExtResource("2_oe7jq")
 region = Rect2(0, 31, 90, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v31og"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhvkj"]
 atlas = ExtResource("2_oe7jq")
 region = Rect2(0, 62, 90, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qs4pi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_812cn"]
 atlas = ExtResource("2_oe7jq")
 region = Rect2(0, 93, 90, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wymei"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aajtm"]
 atlas = ExtResource("2_oe7jq")
 region = Rect2(0, 124, 90, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mnyxa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ki41"]
 atlas = ExtResource("2_oe7jq")
 region = Rect2(0, 155, 90, 31)
 
@@ -152,22 +153,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lew5a")
+"texture": SubResource("AtlasTexture_66qxh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b41bw")
+"texture": SubResource("AtlasTexture_vn2t6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v31og")
+"texture": SubResource("AtlasTexture_rhvkj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qs4pi")
+"texture": SubResource("AtlasTexture_812cn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wymei")
+"texture": SubResource("AtlasTexture_aajtm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mnyxa")
+"texture": SubResource("AtlasTexture_1ki41")
 }],
 "loop": true,
 "name": &"defend",
@@ -234,17 +235,26 @@ b = Vector2(270, 0)
 resource_local_to_scene = true
 b = Vector2(160, 0)
 
-[node name="Unit" instance=ExtResource("1_hgare")]
+[node name="UnitShieldDroid" instance=ExtResource("1_hgare")]
+health = 50
+dps = 0
+def = 1
+speed = 90
+gold_drop = 5
 
 [node name="UnitCollision" parent="." index="0"]
 shape = SubResource("CircleShape2D_3aigd")
 
 [node name="UnitAnimation" parent="." index="1"]
+position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_q5b82")
-animation = &"die"
-frame = 7
-frame_progress = 1.0
+animation = &"defend"
+frame = 0
+frame_progress = 0.111532
 offset = Vector2(0, -16)
+
+[node name="Behavior" parent="." index="2"]
+start_transition_state = ExtResource("8_4dvho")
 
 [node name="AttackShape" parent="AttackBox" index="0"]
 shape = SubResource("SegmentShape2D_t050m")

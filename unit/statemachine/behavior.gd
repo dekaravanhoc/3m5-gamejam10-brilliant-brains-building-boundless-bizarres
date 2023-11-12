@@ -4,6 +4,7 @@ extends Node
 
 @export var unit: Unit
 @export var start_state: GDScript
+@export var start_transition_state: GDScript
 
 var stopped = false
 

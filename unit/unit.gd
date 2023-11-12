@@ -17,6 +17,7 @@ enum PLAYER {Player1, Player2}
 @export var speed: int = 100
 @export var gold_drop: int = 1
 @export var upgrade_function = GDScript
+@export var damage_taken_mod: int = 1
 
 var hit_tween: Tween
 var current_player: PLAYER = PLAYER.Player1
@@ -61,7 +62,7 @@ func spawn(parent_to_spawn_in: Node2D, player: PLAYER, spawn_position: Vector2, 
 
 
 func hit(damage: int):
-	current_health -= damage
+	current_health -= damage * damage_taken_mod
 	if hit_tween and hit_tween.is_running():
 		return
 	if hit_tween:
