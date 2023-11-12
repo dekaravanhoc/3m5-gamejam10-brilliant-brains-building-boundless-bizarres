@@ -18,7 +18,7 @@ func _ready():
 	costsLabel.set_text(str(costs) + " Gold")
 	if already_available:
 		level = 1
-		costs = int(round(costs * 1.05 ** (level / 4) / 2))
+		costs = int(round(costs * 1.05 ** (level / 3)) + 15)
 		costsLabel.set_text(str(costs) + " Gold")
 		addToPlayerUnitsArray()
 
@@ -30,7 +30,7 @@ func incrementLevel():
 
 func incrementCosts():
 	upgrade_menu.player.pay_gold(costs)
-	costs = int(round(costs * 1.05 ** (level / 3)))
+	costs = int(round(costs * 1.05 ** (level / 3)) + 15)
 	costsLabel.set_text(str(costs) + " Gold")
 
 	
@@ -58,6 +58,6 @@ func _on_pressed():
 	buy_upgrade()
 
 func _input(event):
-	if(event.device == upgrade_menu.player.controller and upgrade_menu.current_button == self):
+	if(event.device == upgrade_menu.player.controller and upgrade_menu.current_button == self and upgrade_menu.is_visible_in_tree()):
 		if(event.is_action_pressed("player_buy_upgrade")):
 			_on_pressed()

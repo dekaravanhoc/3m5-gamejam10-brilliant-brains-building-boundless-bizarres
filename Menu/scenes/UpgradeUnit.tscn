@@ -65,7 +65,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("3_c7p6i")
-text = "Level: 0"
+text = "Level: 1"
 fit_content = true
 scroll_active = false
 

@@ -39,14 +39,17 @@ var upgrade_functions: Dictionary = {
 	UpgradeFunctions.Normal: func(level: int):
 		health *= level
 		dps *= level
+		gold_drop *= level
 		,
 	UpgradeFunctions.Attack: func(level: int):
 		health *= int(level/2)
 		dps *= level * 2
+		gold_drop *= level
 		,
 	UpgradeFunctions.HP: func(level: int):
 		health *= level * 2
 		dps *= int(level/2)
+		gold_drop *= level
 		,
 	}
 

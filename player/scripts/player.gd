@@ -4,7 +4,7 @@ extends Area2D
 enum Controller {Controller1, Controller2}
 
 var health: int = 10000
-var money: int = 100000
+var money: int = 0
 var dmg = 0
 var def: int = 1
 
