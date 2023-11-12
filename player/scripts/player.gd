@@ -50,8 +50,17 @@ var current_health: int:
 			await get_tree().create_timer(3).timeout
 			get_tree().reload_current_scene()
 			
-
 func _ready():
+	hide()
+	hud.hide()
+	spawn_game.hide()
+	set_process_input(false)
+
+func start():
+	show()
+	hud.show()
+	spawn_game.show()
+	set_process_input(true)
 	current_health = health
 	hud.update_health(current_health)
 	hud.update_money(money)
@@ -97,13 +106,9 @@ func _input(event):
 			var new_index = wrapi(availableUnits.find(current_unit) - 1, 0, availableUnits.size())
 			current_unit = availableUnits[new_index]
 			spawn_game.set_spawn_unit_texture(current_unit.unit_texture)
+		if event.button_index == JOY_BUTTON_LEFT_SHOULDER:
+			create_unit()
 
-func getUnitLevel(current_unit: Unit):
-	var level = 0
-	for unit in availableUnits:
-		if (unit.id == current_unit.unit_id):
-			level = unit.level
-	return level
 
 func create_unit():
 	if(controller == Controller.Controller1):

@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dw6nkaspcl63u"]
+[gd_scene load_steps=9 format=3 uid="uid://dw6nkaspcl63u"]
 
 [ext_resource type="PackedScene" uid="uid://bwr66ksxsn2tm" path="res://player/player.tscn" id="1_7aaju"]
 [ext_resource type="Texture2D" uid="uid://2lit1b6p0sj7" path="res://assets/vast_land.png" id="2_bvo7h"]
 [ext_resource type="Texture2D" uid="uid://500woqq3yr4g" path="res://assets/vast_land_front.png" id="3_k54gd"]
 [ext_resource type="PackedScene" uid="uid://dkunya2f7r7l3" path="res://Menu/scenes/UpgradeMenu.tscn" id="3_w7bbr"]
+[ext_resource type="FontFile" uid="uid://doe4vbp6pthlm" path="res://assets/font/Celtica-Book.ttf" id="5_5oa2k"]
+[ext_resource type="Script" path="res://main_menu.gd" id="5_fd2b6"]
 [ext_resource type="AudioStream" uid="uid://bqwyw6rm5m1c2" path="res://assets/Gamejam3.mp3" id="6_bbs5k"]
 
 [sub_resource type="GDScript" id="GDScript_y7w3y"]
@@ -79,6 +81,73 @@ texture = ExtResource("3_k54gd")
 [node name="Text" type="CanvasLayer" parent="."]
 layer = 3
 
+[node name="MainMenu" type="MarginContainer" parent="Text" node_paths=PackedStringArray("player1", "player2", "p1text", "p2text", "countdown")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+script = ExtResource("5_fd2b6")
+player1 = NodePath("../../base_player")
+player2 = NodePath("../../base_player2")
+p1text = NodePath("VBoxContainer/HBoxContainer/PlayerOneStartText")
+p2text = NodePath("VBoxContainer/HBoxContainer/PlayerOneStartText2")
+countdown = NodePath("VBoxContainer/HBoxContainer/CountDown")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Text/MainMenu"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Text/MainMenu/VBoxContainer"]
+modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("5_5oa2k")
+theme_override_font_sizes/font_size = 200
+text = "Super Combat
+Simulator"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Text/MainMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 128
+
+[node name="PlayerOneStartText" type="Label" parent="Text/MainMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_5oa2k")
+theme_override_font_sizes/font_size = 48
+text = "Player 1: Press A"
+horizontal_alignment = 1
+
+[node name="CountDown" type="Label" parent="Text/MainMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_5oa2k")
+theme_override_font_sizes/font_size = 128
+horizontal_alignment = 1
+
+[node name="PlayerOneStartText2" type="Label" parent="Text/MainMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_5oa2k")
+theme_override_font_sizes/font_size = 48
+text = "Player 2: Press A"
+horizontal_alignment = 1
+
 [node name="CenterContainer" type="CenterContainer" parent="Text"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,6 +159,11 @@ grow_vertical = 2
 visible = false
 modulate = Color(1, 0, 1, 1)
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("5_5oa2k")
 theme_override_font_sizes/font_size = 200
 text = "Player 1 WON"
 

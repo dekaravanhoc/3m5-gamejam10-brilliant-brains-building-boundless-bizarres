@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmi8saio7oelk"]
+[gd_scene load_steps=6 format=3 uid="uid://bmi8saio7oelk"]
 
 [ext_resource type="Script" path="res://hud/hud.gd" id="1_8pk10"]
+[ext_resource type="FontFile" uid="uid://doe4vbp6pthlm" path="res://assets/font/Celtica-Book.ttf" id="2_pr4tf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1aea"]
 content_margin_left = 16.0
@@ -68,5 +69,6 @@ show_percentage = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_pr4tf")
 theme_override_font_sizes/font_size = 32
 text = "Money: 0"
