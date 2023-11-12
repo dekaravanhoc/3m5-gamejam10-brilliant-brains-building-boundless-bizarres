@@ -122,5 +122,5 @@ func open_menu(player: int):
 		spawn_game.stop_game()
 	else:
 		spawn_game.start_game()
-	children.grab_focus()
+	#children.grab_focus()
 

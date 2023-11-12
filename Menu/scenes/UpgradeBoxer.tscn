@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv6ru718vt12a"]
+[gd_scene load_steps=4 format=3 uid="uid://bv6ru718vt12a"]
 
 [ext_resource type="Script" path="res://Menu/scripts/BuyUnit.gd" id="1_g3474"]
 [ext_resource type="Texture2D" uid="uid://b4h58i4wx7x6r" path="res://unit/assets/spirit_boxer/attack_menu.png" id="2_rp8fm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0oyd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
 
 [node name="Button" type="Button" node_paths=PackedStringArray("levelLabel", "costsLabel")]
 custom_minimum_size = Vector2(0, 100)
@@ -66,8 +73,18 @@ clip_contents = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
-text = "100 Gold"
+text = "102 Gold"
 fit_content = true
 scroll_active = false
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g0oyd")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

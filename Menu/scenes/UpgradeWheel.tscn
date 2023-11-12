@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf8gdlp07og17"]
+[gd_scene load_steps=4 format=3 uid="uid://cf8gdlp07og17"]
 
 [ext_resource type="Script" path="res://Menu/scripts/BuyUnit.gd" id="1_bp4bi"]
 [ext_resource type="Texture2D" uid="uid://e665gpsswutb" path="res://unit/assets/bot_wheel/charge_menu.png" id="2_0htfn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsrfp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
 
 [node name="Button" type="Button" node_paths=PackedStringArray("levelLabel", "costsLabel")]
 custom_minimum_size = Vector2(0, 100)
@@ -69,5 +76,14 @@ size_flags_vertical = 3
 text = "100 Gold"
 fit_content = true
 scroll_active = false
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qsrfp")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
