@@ -60,6 +60,7 @@ func start_game():
 	hit_timer.start()
 	current_key_to_press = keys.pick_random()
 	button_texture_atlas.region = key_to_texture_rect[current_key_to_press]
+	show()
 
 
 func stop_game():
@@ -67,10 +68,11 @@ func stop_game():
 	hit_timer.stop()
 	current_key_to_press = -1
 	last_key_sucess = false
+	hide()
 
 
 func spawn_button_pressed(button_key: int):
-	if rythm_timer.is_stopped() or current_key_to_press == -1 or not button_timeout_timer.is_stopped():
+	if not keys.has(button_key) and rythm_timer.is_stopped() or current_key_to_press == -1 or not button_timeout_timer.is_stopped():
 		return
 	button_timeout_timer.start()
 	if hit_timer.is_stopped() or button_key != current_key_to_press:

@@ -4,7 +4,7 @@ extends Area2D
 enum Controller {Controller1, Controller2}
 
 var health: int = 10000
-var money: int = 0
+var money: int = 100000
 var dmg = 0
 var def: int = 1
 
@@ -13,7 +13,7 @@ var availableUnits = []
 @export var controller: Controller
 @export var enemy_player: Player
 @export var win_message_label: Label
-@export var menu: Control
+@export var menu: UpgradeMenu
 @export var hud: PlayerHud
 @export var spawn_game: SpawnGame
 
@@ -40,6 +40,7 @@ var current_health: int:
 func _ready():
 	current_health = health
 	hud.update_health(current_health)
+	hud.update_money(money)
 	hud.position = global_position
 	hud.set_for_player(controller)
 	spawn_game.position = global_position
@@ -65,8 +66,8 @@ func _input(event):
 		return
 	if (event is InputEventJoypadButton and event.pressed and not event.is_echo()):
 		spawn_game.spawn_button_pressed(event.button_index)
-#	if(event.is_action_pressed("player_open_menu")):
-#		open_menu(event.device)
+	if(event.is_action_pressed("player_open_menu")):
+		open_menu(event.device)
 
 func create_unit():
 	if(controller == Controller.Controller1):
@@ -96,8 +97,11 @@ func has_enough_gold(amount: int):
 	return money >= amount
 
 func open_menu(player: int):
-	var children: Button = menu.get_children()[0].get_children()[0].get_children()[0].get_children()[0].get_children()[0].get_children()[0]
+	var children: Button = menu.get_upgrades()[0]
 	menu.visible = !menu.is_visible_in_tree()
+	if menu.visible:
+		spawn_game.stop_game()
+	else:
+		spawn_game.start_game()
 	children.grab_focus()
-	print("menu", player)
 

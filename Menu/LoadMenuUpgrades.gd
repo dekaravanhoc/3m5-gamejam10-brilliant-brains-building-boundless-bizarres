@@ -1,4 +1,5 @@
-extends Node
+class_name Upgrades
+extends VBoxContainer
 
 var control: Control
 @export var player: Player
