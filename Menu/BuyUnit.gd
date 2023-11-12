@@ -42,7 +42,8 @@ func addToPlayerUnitsArray():
 		player.availableUnits.append(self)
 	print(player.availableUnits)
 
-func _on_pressed():
+func buy_upgrade():
+	print("buy: ", id)
 	var player = getPlayer()
 	var playerMoney = player.money
 	
@@ -51,4 +52,13 @@ func _on_pressed():
 		incrementCosts()
 		addToPlayerUnitsArray()
 
-	pass # Replace with function body.
+
+func _on_pressed():
+	buy_upgrade()
+func _on_focus_changed(control: Control):
+	print(control, "Test")
+
+func _input(event):
+	if(get_viewport().gui_get_focus_owner() == self):
+		if(event.is_action_pressed("player_buy_upgrade")):
+			_on_pressed()
