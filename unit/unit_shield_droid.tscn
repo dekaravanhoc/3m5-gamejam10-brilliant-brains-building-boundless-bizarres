@@ -241,6 +241,7 @@ dps = 0
 def = 1
 speed = 90
 gold_drop = 5
+unit_id = "droid"
 
 [node name="UnitCollision" parent="." index="0"]
 shape = SubResource("CircleShape2D_3aigd")
