@@ -9,6 +9,7 @@ var dmg = 0
 var def: int = 1
 
 var availableUnits = []
+var current_unit: UnitUpgrade
 
 @export var controller: Controller
 @export var enemy_player: Player
@@ -33,6 +34,9 @@ var current_health: int:
 
 			for unit in get_tree().get_nodes_in_group("Units"):
 				unit.behavior.change_state(StateDie.new())
+			spawn_game.hide()
+			spawn_game.stop_game()
+			hud.hide()
 			await get_tree().create_timer(3).timeout
 			get_tree().reload_current_scene()
 			
@@ -45,8 +49,17 @@ func _ready():
 	hud.set_for_player(controller)
 	spawn_game.position = global_position
 	spawn_game.set_for_player(controller)
+	if not availableUnits.is_empty():
+		current_unit = availableUnits[0]
+		spawn_game.set_spawn_unit_texture(current_unit.unit_texture)
 	spawn_game.spawn_button_success.connect(create_unit)
 	spawn_game.start_game()
+	
+	enemy_player.health_depleted.connect(func():
+			spawn_game.hide()
+			spawn_game.stop_game()
+			hud.hide()
+			)
 	
 	
 	if controller == Controller.Controller1:
@@ -58,24 +71,31 @@ func _ready():
 
 	
 func _input(event):
-	if(event.is_action_pressed("debug_player2_create") && controller == Controller.Controller2):
-		create_unit()
-		
-	#print(event, 'event')
 	if(event.device != input_device):
+		return
+	if(event.is_action_pressed("player_open_menu")):
+		open_menu(event.device)
+	if menu.visible:
 		return
 	if (event is InputEventJoypadButton and event.pressed and not event.is_echo()):
 		spawn_game.spawn_button_pressed(event.button_index)
-	if(event.is_action_pressed("player_open_menu")):
-		open_menu(event.device)
+		if event.button_index == JOY_BUTTON_DPAD_DOWN:
+			var new_index = wrapi(availableUnits.find(current_unit) + 1, 0, availableUnits.size())
+			current_unit = availableUnits[new_index]
+			spawn_game.set_spawn_unit_texture(current_unit.unit_texture)
+		if event.button_index == JOY_BUTTON_DPAD_UP:
+			var new_index = wrapi(availableUnits.find(current_unit) - 1, 0, availableUnits.size())
+			current_unit = availableUnits[new_index]
+			spawn_game.set_spawn_unit_texture(current_unit.unit_texture)
+	
 
 func create_unit():
 	if(controller == Controller.Controller1):
-		var current_unit = preload("res://unit/unit.tscn").instantiate()
-		current_unit.spawn(self.get_parent(), Unit.PLAYER.Player1, self.global_position + Vector2(20,0), enemy_player.collect_gold)
+		var unit_to_spawn = current_unit.unit_scene.instantiate()
+		unit_to_spawn.spawn(self.get_parent(), Unit.PLAYER.Player1, self.global_position + Vector2(20,0), enemy_player.collect_gold, current_unit.level)
 	if(controller == Controller.Controller2):
-		var current_unit = preload("res://unit/unit_boxer.tscn").instantiate()
-		current_unit.spawn(self.get_parent(), Unit.PLAYER.Player2, self.global_position - Vector2(20,0), enemy_player.collect_gold)
+		var unit_to_spawn = current_unit.unit_scene.instantiate()
+		unit_to_spawn.spawn(self.get_parent(), Unit.PLAYER.Player2, self.global_position - Vector2(20,0), enemy_player.collect_gold, current_unit.level)
 	
 func hit(amount: int):
 	current_health -= amount

@@ -1,11 +1,14 @@
 class_name Unit
 extends Area2D
-# TODO: attack order change
+
+
 signal health_changed(value: int)
 signal gold_dropped(amount: int)
 signal killed
 
 enum PLAYER {Player1, Player2}
+
+enum UpgradeFunctions {Normal, Attack, HP}
 
 @export var animated_sprite: AnimatedSprite2D
 @export var attack_box: Area2D
@@ -16,7 +19,7 @@ enum PLAYER {Player1, Player2}
 @export var def: int = 0
 @export var speed: int = 100
 @export var gold_drop: int = 1
-@export var upgrade_function = GDScript
+@export var upgrade_function: UpgradeFunctions = UpgradeFunctions.Normal
 @export var damage_taken_mod: int = 1
 
 var hit_tween: Tween
@@ -29,6 +32,23 @@ var current_move_direction: Vector2:
 			return Vector2.RIGHT
 		else:
 			return Vector2.LEFT
+
+
+var upgrade_functions: Dictionary = {
+	UpgradeFunctions.Normal: func(level: int):
+		health *= level
+		dps *= level
+		,
+	UpgradeFunctions.Attack: func(level: int):
+		health *= int(level/2)
+		dps *= level * 2
+		,
+	UpgradeFunctions.HP: func(level: int):
+		health *= level * 2
+		dps *= int(level/2)
+		,
+	}
+
 
 @onready var attack_speed: float = (animated_sprite.sprite_frames.get_frame_count("attack_start") + animated_sprite.sprite_frames.get_frame_count("attack_end")) / 8.0
 
@@ -57,7 +77,7 @@ func spawn(parent_to_spawn_in: Node2D, player: PLAYER, spawn_position: Vector2, 
 	global_position = spawn_position
 	current_player = player
 	gold_collect_function = gold_collect_function_to_use
-	upgrade_function.upgrade(self, level)
+	upgrade_functions[upgrade_function].call(level)
 	parent_to_spawn_in.add_child(self)
 
 

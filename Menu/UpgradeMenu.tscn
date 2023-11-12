@@ -56,6 +56,7 @@ script = ExtResource("1_k7tko")
 layout_mode = 2
 unit_scene = ExtResource("4_7ivmv")
 upgrade_menu = NodePath("../../../../..")
+already_available = true
 
 [node name="Button2" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("upgrade_menu") instance=ExtResource("3_1pvq0")]
 layout_mode = 2
