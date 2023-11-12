@@ -87,7 +87,13 @@ func _input(event):
 			var new_index = wrapi(availableUnits.find(current_unit) - 1, 0, availableUnits.size())
 			current_unit = availableUnits[new_index]
 			spawn_game.set_spawn_unit_texture(current_unit.unit_texture)
-	
+
+func getUnitLevel(current_unit: Unit):
+	var level = 0
+	for unit in availableUnits:
+		if (unit.id == current_unit.unit_id):
+			level = unit.level
+	return level
 
 func create_unit():
 	if(controller == Controller.Controller1):
@@ -96,7 +102,7 @@ func create_unit():
 	if(controller == Controller.Controller2):
 		var unit_to_spawn = current_unit.unit_scene.instantiate()
 		unit_to_spawn.spawn(self.get_parent(), Unit.PLAYER.Player2, self.global_position - Vector2(20,0), enemy_player.collect_gold, current_unit.level)
-	
+
 func hit(amount: int):
 	current_health -= amount
 	hud.update_health(100.0 * current_health / health)
@@ -123,5 +129,5 @@ func open_menu(player: int):
 		spawn_game.stop_game()
 	else:
 		spawn_game.start_game()
-	children.grab_focus()
+	#children.grab_focus()
 

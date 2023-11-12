@@ -9,9 +9,12 @@ extends Button
 @export var upgrade_menu: UpgradeMenu
 @export var already_available: bool = false
 
+var navigationArrow: Panel
+
 @onready var unit_texture: Texture = $HBoxContainer/TextureRect.texture
 
 func _ready():
+	navigationArrow = get_node("Panel")
 	if already_available:
 		level = 1
 		costs = int(round(costs * 1.05 ** (level / 3)))
@@ -44,10 +47,14 @@ func buy_upgrade():
 		addToPlayerUnitsArray()
 
 
+func show_navigation_arrow():
+	navigationArrow.visible = true
+
+func hide_navigation_arrow():
+	navigationArrow.visible = false
+
 func _on_pressed():
 	buy_upgrade()
-func _on_focus_changed(control: Control):
-	print(control, "Test")
 
 func _input(event):
 	if(event.device == upgrade_menu.player.controller and upgrade_menu.current_button == self):

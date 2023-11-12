@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://u2bwpvu0jyny"]
+[gd_scene load_steps=4 format=3 uid="uid://frx24qahdn43"]
 
-[ext_resource type="Script" path="res://Menu/BuyUnit.gd" id="1_hiiiq"]
-[ext_resource type="Texture2D" uid="uid://q3qk7sitkug2" path="res://unit/assets/ball_and_chain_bot/hit_menu.png" id="2_ekn3t"]
+[ext_resource type="Script" path="res://Menu/scripts/BuyUnit.gd" id="1_bmc88"]
+[ext_resource type="Texture2D" uid="uid://7j3uswephb2x" path="res://unit/assets/shield_droid/static idle_menu.png" id="2_tauv0"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhdc0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qt5nk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
 
 [node name="Button" type="Button" node_paths=PackedStringArray("levelLabel", "costsLabel")]
 custom_minimum_size = Vector2(0, 100)
@@ -12,8 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bhdc0")
-script = ExtResource("1_hiiiq")
+script = ExtResource("1_bmc88")
 levelLabel = NodePath("HBoxContainer/VBoxContainer2/UnitLevel")
 costsLabel = NodePath("HBoxContainer/VBoxContainer3/UnitCosts")
 
@@ -27,7 +31,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_ekn3t")
+texture = ExtResource("2_tauv0")
 expand_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
@@ -69,8 +73,18 @@ clip_contents = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
-text = "100 Gold"
+text = "103 Gold"
 fit_content = true
 scroll_active = false
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qt5nk")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

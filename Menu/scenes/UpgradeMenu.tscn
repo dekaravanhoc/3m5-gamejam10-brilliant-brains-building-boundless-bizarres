@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://dkunya2f7r7l3"]
 
-[ext_resource type="Script" path="res://Menu/LoadMenuUpgrades.gd" id="1_k7tko"]
-[ext_resource type="Script" path="res://Menu/UpgradeMenu.gd" id="1_o7mp2"]
-[ext_resource type="PackedScene" path="res://Menu/UpgradeBoxer.tscn" id="3_1pvq0"]
-[ext_resource type="PackedScene" uid="uid://u2bwpvu0jyny" path="res://Menu/UpgradeUnit.tscn" id="3_qdp31"]
+[ext_resource type="Script" path="res://Menu/scripts/LoadMenuUpgrades.gd" id="1_k7tko"]
+[ext_resource type="Script" path="res://Menu/scripts/UpgradeMenu.gd" id="1_o7mp2"]
+[ext_resource type="PackedScene" uid="uid://bv6ru718vt12a" path="res://Menu/scenes/UpgradeBoxer.tscn" id="3_1pvq0"]
+[ext_resource type="PackedScene" uid="uid://u2bwpvu0jyny" path="res://Menu/scenes/UpgradeUnit.tscn" id="3_qdp31"]
 [ext_resource type="PackedScene" uid="uid://b08nxb25y3ene" path="res://unit/unit.tscn" id="4_7ivmv"]
-[ext_resource type="PackedScene" path="res://Menu/UpgradeDroid.tscn" id="5_ak6qp"]
-[ext_resource type="PackedScene" uid="uid://b6p8mi4ow43cn" path="res://unit/unit_boxer.tscn" id="6_qeq8n"]
+[ext_resource type="PackedScene" uid="uid://frx24qahdn43" path="res://Menu/scenes/UpgradeDroid.tscn" id="5_ak6qp"]
+[ext_resource type="PackedScene" uid="uid://328i2m2lfiom" path="res://unit/unit_boxer.tscn" id="6_qeq8n"]
 [ext_resource type="PackedScene" uid="uid://dli3v75tafgq" path="res://unit/unit_wheel_gunner.tscn" id="9_nohpq"]
 
 [node name="UpgradeMenu" type="Control" node_paths=PackedStringArray("upgrades", "current_button")]
@@ -60,6 +60,7 @@ already_available = true
 
 [node name="Button2" parent="VBoxContainer/MarginContainer2/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("upgrade_menu") instance=ExtResource("3_1pvq0")]
 layout_mode = 2
+costs = 102
 unit_scene = ExtResource("6_qeq8n")
 upgrade_menu = NodePath("../../../../..")
 

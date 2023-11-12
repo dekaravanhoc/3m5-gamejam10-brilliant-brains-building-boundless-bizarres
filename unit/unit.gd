@@ -21,6 +21,7 @@ enum UpgradeFunctions {Normal, Attack, HP}
 @export var gold_drop: int = 1
 @export var upgrade_function: UpgradeFunctions = UpgradeFunctions.Normal
 @export var damage_taken_mod: int = 1
+@export var unit_id: String
 
 var hit_tween: Tween
 var current_player: PLAYER = PLAYER.Player1
@@ -74,6 +75,7 @@ func _ready():
 
 
 func spawn(parent_to_spawn_in: Node2D, player: PLAYER, spawn_position: Vector2, gold_collect_function_to_use: Callable, level: int = 1):
+	print("Spawn with level ", level)
 	global_position = spawn_position
 	current_player = player
 	gold_collect_function = gold_collect_function_to_use
