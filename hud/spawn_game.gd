@@ -15,6 +15,9 @@ const BUTTON_TIMEOUT_TIMER_TIME = 0.5
 @export var timer_bar: ProgressBar
 @export var button_texture_rect: TextureRect
 @export var panel: PanelContainer
+@export var unit_texture_rect: TextureRect
+@export var player: Player
+
 
 var game_step = 1
 
@@ -51,7 +54,7 @@ func set_for_player(controller: Player.Controller):
 	panel.position.y -= 500
 	panel.position.x = 200
 	if(controller == Player.Controller.Controller2):
-		panel.position.x -= 400 + 144
+		panel.position.x -= 400 + 144 + 128
 
 
 func start_game():
@@ -69,10 +72,14 @@ func stop_game():
 	current_key_to_press = -1
 	last_key_sucess = false
 	hide()
+	
+
+func set_spawn_unit_texture(texture: Texture):
+	unit_texture_rect.texture = texture
 
 
 func spawn_button_pressed(button_key: int):
-	if not keys.has(button_key) and rythm_timer.is_stopped() or current_key_to_press == -1 or not button_timeout_timer.is_stopped():
+	if not keys.has(button_key) or rythm_timer.is_stopped() or current_key_to_press == -1 or not button_timeout_timer.is_stopped():
 		return
 	button_timeout_timer.start()
 	if hit_timer.is_stopped() or button_key != current_key_to_press:

@@ -7,19 +7,28 @@ extends Button
 @export var costsLabel: RichTextLabel
 @export var unit_scene: PackedScene
 @export var upgrade_menu: UpgradeMenu
+@export var already_available: bool = false
 
+@onready var unit_texture: Texture = $HBoxContainer/TextureRect.texture
+
+func _ready():
+	if already_available:
+		level = 1
+		costs = int(round(costs * 1.05 ** (level / 3)))
+		costsLabel.set_text(str(costs) + " Gold")
+		addToPlayerUnitsArray()
 
 func incrementLevel():
 	level = level + 1
 	levelLabel.set_text("Level: " + str(level))
-	pass
+	
 
 
 func incrementCosts():
 	upgrade_menu.player.pay_gold(costs)
 	costs = int(round(costs * 1.05 ** (level / 3)))
 	costsLabel.set_text(str(costs) + " Gold")
-	pass
+
 	
 func addToPlayerUnitsArray():
 	print(upgrade_menu.player.availableUnits.has(self), upgrade_menu.player.availableUnits.find(self))

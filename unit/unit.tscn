@@ -1,7 +1,6 @@
-[gd_scene load_steps=39 format=3 uid="uid://b08nxb25y3ene"]
+[gd_scene load_steps=38 format=3 uid="uid://b08nxb25y3ene"]
 
 [ext_resource type="Script" path="res://unit/unit.gd" id="1_6mxwx"]
-[ext_resource type="Script" path="res://unit/upgrade_functions/upgrade_function.gd" id="2_3lle1"]
 [ext_resource type="Texture2D" uid="uid://dwohpfq3yg824" path="res://unit/assets/ball_and_chain_bot/run.png" id="2_08t1x"]
 [ext_resource type="Texture2D" uid="uid://be41hnen6crbx" path="res://unit/assets/ball_and_chain_bot/attack.png" id="2_l2o7t"]
 [ext_resource type="Script" path="res://unit/statemachine/behavior.gd" id="3_auhp4"]
@@ -240,7 +239,6 @@ attack_box = NodePath("AttackBox")
 attack_range = NodePath("AttackRange")
 behavior = NodePath("Behavior")
 speed = 200
-upgrade_function = ExtResource("2_3lle1")
 
 [node name="UnitCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -50)

@@ -27,7 +27,7 @@ func _attack() -> void:
 		behavior.change_state(StateMove.new())
 		return
 	if not current_target:
-		current_target = behavior.unit.attack_box.get_overlapping_areas()[0]
+		current_target = behavior.unit.attack_box.get_overlapping_areas().back()
 		if current_target.has_signal("killed"):
 			current_target.killed.connect(_attack)
 	if current_target.has_method("hit"):

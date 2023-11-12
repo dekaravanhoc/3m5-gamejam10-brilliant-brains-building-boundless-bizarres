@@ -5,6 +5,8 @@ extends State
 func start():
 	behavior.unit.animated_sprite.play("move")
 	behavior.unit.attack_range.area_entered.connect(_on_possible_target_in_range)
+	if not behavior.unit.attack_range.get_overlapping_areas().is_empty():
+		behavior.change_state(StateAttack.new())
 
 
 func run(delta: float):
